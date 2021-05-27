@@ -6,6 +6,11 @@
     margin-top: 190px;
 }
 
+.img-flicc {
+    height: 300px;
+    width: auto;
+}
+
 button:active {
     background: #e5e5e5;
     -webkit-box-shadow: inset 0px 0px 5px #c1c1c1;
