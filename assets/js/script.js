@@ -16,7 +16,6 @@ let url = 'https://cors-anywhere.herokuapp.com/https://api.watchmode.com/v1/genr
 
         // Genre URL 'https://cors-anywhere.herokuapp.com/https://api.watchmode.com/v1/genres/?apiKey=eQskMVotZ04L0wctRWM1T3ALo76eT61EZHK8Ycx0'
 
-        // "Action", "Action & Adventure", "Adult",  "Adventure", "Animation", "Anime",  "Biography",  "Comedy" "Crime" "Documentary", "Drama", "Family",  "Fantasy","Food", "Game Show", "History","Horror","Kids", "Music", "Musical", "Mystery", "Nature", "News", "Reality", 
-        // "Romance", "Sci-Fi & Fantasy", "Science Fiction", "Soap", "Sports","Supernatural", "Talk", "Thriller","Travel", "TV Movie", "War", "War & Politics", "Western",
+        // "Action & Adventure", "Animation", "Anime", "Comedy" "Crime" "Documentary", "Drama", "Family","Horror","Kids", "Musical", "Mystery", "Romance", "Sci-Fi & Fantasy","Sports","Supernatural","Thriller", "War", "Western",
 
         
