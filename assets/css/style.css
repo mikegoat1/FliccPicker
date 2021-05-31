@@ -18,3 +18,6 @@ button:active {
             box-shadow: inset 0px 0px 5px #c1c1c1;
      outline: none;
   }
+
+  /* suggested background color. Makes the buttons and icon pop. maybe add 
+  a shadow to the image with white as the shadow. or a glow effect (#2e2e2e) */
