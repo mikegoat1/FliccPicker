@@ -4,19 +4,7 @@ var resultContentEl = document.querySelector("#result-content");
 var genre = document.location.search;
 console.log(genre);
 
-var urlGenres = 'https://cors-anywhere.herokuapp.com/https://netflix-unofficial.p.rapidapi.com/api/search?apiKey=917c1e408cmshe632e5d67';
-
-// Get parameters out of the URL
-// function getParams() {
-//         // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
-//         var params = document.location.search;
-      
-//         // Get the query and format values
-//         var genre = params[0].split('=').pop();
-//         console.log(genre);
-      
-//         SearchApi(genre);
-// };
+var urlGenres = 'https://cors-anywhere.herokuapp.com/https://netflix-unofficial.p.rapidapi.com/api/search?apiKey=917c1e408cmshe632e5d6739846dp1cf501jsn9642ae4176f8';
 
 function printResults(resultObject) {
         console.log(resultObject);
@@ -73,7 +61,15 @@ function printResults(resultObject) {
         resultContentEl.append(resultCard);
 };
 
-fetch("https://netflix-unofficial.p.rapidapi.com/api/search", {
+function searchApi(genre) {
+
+        var localQueryUrl = "https://netflix-unofficial.p.rapidapi.com/api/search";
+
+        if (genre) {
+                localQueryUrl = "https://netflix-unofficial.p.rapidapi.com/api/search?genre=" + genre;
+        }
+
+        fetch(localQueryUrl, {
 	"method": "GET",
 	"headers": {
 		"x-rapidapi-key": "917c1e408cmshe632e5d6739846dp1cf501jsn9642ae4176f8",
@@ -85,44 +81,45 @@ fetch("https://netflix-unofficial.p.rapidapi.com/api/search", {
         })
         .catch(err => {
 	console.error(err);
-});
+        });
+};        
 
 // Function to search API
-function searchApi(genre) {
+// function searchApi(genre) {
 
-        var localQueryUrl = "https://netflix-unofficial.p.rapidapi.com/api/search";
+//         var localQueryUrl = "https://netflix-unofficial.p.rapidapi.com/api/search";
 
-        if (genre) {
-                localQueryUrl = '"https://netflix-unofficial.p.rapidapi.com/api/search"' + genre + '/?fo=json';
-        }
+//         if (genre) {
+//                 localQueryUrl = '"https://netflix-unofficial.p.rapidapi.com/api/search"' + genre;
+//         }
 
-        fetch(localQueryUrl)
-                .then(function (response) {
-                        if (!response.ok) {
-                        throw response.json();
-                        }
+//         fetch(localQueryUrl)
+//                 .then(function (response) {
+//                         if (!response.ok) {
+//                         throw response.json();
+//                         }
 
-                        return response.json();
-                })
-                .then(function (localResponse) {
-                        resultTextEl.textContent = localResponse.genre;
+//                         return response.json();
+//                 })
+//                 .then(function (localResponse) {
+//                         resultTextEl.textContent = localResponse.genre;
 
-                        console.log(localResponse);
+//                         console.log(localResponse);
 
-                        if (!localResponse.results.length) {
-                                console.log('No results!');
-                                resultConteltEl.innerHTML = "<h3>No results found, sorry!</h3>";
-                        } else {
-                                resultContentEl.textContent = "";
-                                for (var i = 0; i < localResults.results.lengthl; i++) {
-                                printResults(localResponse.results[i]);
-                                }
-                        }
-                })
-                .catch(function (error) {
-                        console.error(error);
-                })
-};           
+//                         if (!localResponse.results.length) {
+//                                 console.log('No results!');
+//                                 resultConteltEl.innerHTML = "<h3>No results found, sorry!</h3>";
+//                         } else {
+//                                 resultContentEl.textContent = "";
+//                                 for (var i = 0; i < localResults.results.lengthl; i++) {
+//                                 printResults(localResponse.results[i]);
+//                                 }
+//                         }
+//                 })
+//                 .catch(function (error) {
+//                         console.error(error);
+//                 })
+// };           
 
 searchApi(genre);
 
