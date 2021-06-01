@@ -22,22 +22,16 @@ fetch(urlSource)
 //Testing checkboxes 
 console.log($("input:checked"));
 // Grabs all the selected buttons on starterPage
-sourceCheck();
 function sourceCheck() {
-    let checkedEl = $("input:checked");
-    let selected = [];
-
-    $.each(checkedEl, function () {
-        selected.push($(this).val());
-    });
-    //Console logs all selected in a string
-    console.log("You have selected, ", selected)
-    return selected;
+    let genreInputVal = $("#genre-input").val(); 
+    let sourceInputVal = $("#source-input").val(); 
 
 }
 //On click of submit button calls function sourceChecks
-$("button[value=button]").on("click", function () {
+$("button[value=button]").on("click", function (event) {
+    event.preventDefault();
     sourceCheck()
+
 
 });
 
