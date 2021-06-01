@@ -44,19 +44,25 @@ var genreArray = ["Action & Adventure", "Animation", "Anime", "Comedy", "Crime",
 // // Variable for HTML submit button
 // var submitBtn = document.querySelector('#submit');
 
-fetch(urlGenres)
-    .then(function (response) {
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-    })
-//Testing checkboxes 
-console.log($("input:checked"));
-// Grabs all the selected buttons on starterPage
+// fetch(urlGenres)
+//     .then(function (response) {
+//         return response.json();
+//     })
+//     .then(function (data) {
+//         console.log(data);
+//     })
+// Grabs Selected from Starter Page
 function sourceCheck() {
     let genreInputVal = $("#genre-input").val(); 
     let sourceInputVal = $("#source-input").val(); 
+    console.log(genreInputVal);
+
+    let queryString = "/results_page.html?genre=" + genreInputVal;
+
+    location.assign(queryString);
+
+
+
 
 }
 //On click of submit button calls function sourceChecks
