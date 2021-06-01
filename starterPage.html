@@ -24,23 +24,24 @@
 <body>
     <!-- FliccPicker Image -->
     <div class="class col-6 justify-content-center center align-content-center d-flex">
-        <img src="assets/images/FLICCPICKER.png" class="img-flicc" alt="...">
+        <img src="assets/images/FLICCPICKER.png" class="img-flicc" alt="..." data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+            
+        <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasTopLabel">Welcome to FliccPicker!</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+            Feel like you've seen everything on Netflix? Tired of endless scrolling? Let us pick your next flicc! Just select a genre and we'll deliver a random list of films for you to choose from!
+            </div>
+        </div>
     </div>
     
     <div class="container justify-content-center d-flex">
 
-        <div class="row mt-4">
+        <form id="search-form">
 
-            <div class="col-6">
-                <!-- Button for Streaming Services -->
-                <div class="form">
-
-                    <form id="search-form" class="form w-100">
-                        
-                        <select id="source-input" class="form-input w-100">
-                            <option value="" disabled selected>Select a streaming Service...</option>
-                            <option value="netflix">Netflix</option>
-                        </select>
+            <div class="row">
 
                         <select id="genre-input" class="form-input w-100">
                             <option value="" disabled selected>Select a genre...</option>
@@ -64,10 +65,11 @@
 
                     </form>
 
-                </div>
+            <div class="row">
+                <button value="button" class="btn btn-warning btn-lg">PICK MY FLICC</button>
             </div>
             
-        </div>
+        </form>
 
     </div>
 
@@ -81,6 +83,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Personal JS 1 -->
     <script src="./assets/js/starterPage.js"></script>
+    <script src="./assets/js/results_page.js"></script>
 
 </body>
 
