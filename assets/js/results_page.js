@@ -97,7 +97,7 @@ function printResults(resultObject) {
     playlistButtonEl.setAttribute("id", "playlist");
     playlistButtonEl.classList.add('btn', 'btn-dark');
 
-    resultBody.append(movieTitle, bodyContentEl, watchButtonEl, playlistButtonEl, infoButtonEl);
+    resultBody.append(movieTitle, bodyContentEl, watchButtonEl, playlistButtonEl);
 
     resultContentEl.append(resultCard);
 };
