@@ -66,7 +66,5 @@ function sourceCheck() {
 $("button[value=button]").on("click", function (event) {
     event.preventDefault();
     sourceCheck()
-
-
 });
 

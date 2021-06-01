@@ -1,19 +1,36 @@
 // Variables
-var resultContentEl = document.querySelector("#result-content")
+var resultContentEl = document.querySelector("#result-content");
+
+
 
 // Get parameters out of the URL
-// function getParams() {
-//         // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
-//         var searchParamsArr = document.location.search.split('&');
+function getParams() {
+        // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
+        // var searchParamsArr = document.location.search.split('&');
       
-//         // Get the query and format values
-//         var genre = searchParamsArr[0].split('=').pop();
+        // Get the query and format values
+        var genre = searchParamsArr[0].split('=').pop();
       
-//         searchApi(genre);
-// };
+        SearchApi(genre);
+};
 
-// Fetch Genres from API
-// fetch("https://netflix-unofficial.p.rapidapi.com/api/genres", {
+// Fetch genres from API
+fetch("https://netflix-unofficial.p.rapidapi.com/api/genres", {
+        "method": "GET",
+        "headers": {
+                "x-rapidapi-key": "917c1e408cmshe632e5d6739846dp1cf501jsn9642ae4176f8",
+                "x-rapidapi-host": "netflix-unofficial.p.rapidapi.com"
+        }
+})
+.then(response => {
+        console.log(response);
+})
+.catch(err => {
+        console.error(err);
+});
+
+// Fetch search from API
+// fetch("https://netflix-unofficial.p.rapidapi.com/api/search?genre=Action", {
 // 	"method": "GET",
 // 	"headers": {
 // 		"x-rapidapi-key": "917c1e408cmshe632e5d6739846dp1cf501jsn9642ae4176f8",
@@ -27,30 +44,33 @@ var resultContentEl = document.querySelector("#result-content")
 // 	console.error(err);
 // });
 
-searchApi(genre);
-
 // Function to search API
 function searchApi(genre) {
         var locQueryUrl = "https://netflix-unofficial.p.rapidapi.com/api/search";
       
         if (genre) {
-          locQueryUrl = "https://netflix-unofficial.p.rapidapi.com/api/search?genre=" + genre;
+                locQueryUrl = "https://netflix-unofficial.p.rapidapi.com/api/search?genre=" + genre;
         };
-      
-        fetch(locQueryUrl, {
-	        "method": "GET",
-	        "headers": {
-		        "x-rapidapi-key": "917c1e408cmshe632e5d6739846dp1cf501jsn9642ae4176f8",
-		        "x-rapidapi-host": "netflix-unofficial.p.rapidapi.com"
-	        }
-        })
+        
+        fetch(localQueryUrl), {
+                "method": "GET",
+                "headers": {
+                        "x-rapidapi-key": "917c1e408cmshe632e5d6739846dp1cf501jsn9642ae4176f8",
+                        "x-rapidapi-host": "netflix-unofficial.p.rapidapi.com"
+                }
+        }
         .then(response => {
-	        console.log(response);
+                console.log(response);
         })
         .catch(err => {
-	        console.error(err);
+                console.error(err);
         });
 };
+
+getParams();
+        
+
+// };
 
 // var urlGenres = 'https://cors-anywhere.herokuapp.com/https://api.watchmode.com/v1/genres/?apiKey=eQskMVotZ04L0wctRWM1T3ALo76eT61EZHK8Ycx0';
 
