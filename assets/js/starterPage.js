@@ -57,7 +57,7 @@ function sourceCheck() {
     let sourceInputVal = $("#source-input").val(); 
     console.log(genreInputVal);
 
-    let queryString = "/results_page.html?genre=" + genreInputVal;
+    let queryString = "/results_page.html?genrelist=" + genreInputVal;
 
     location.assign(queryString);
     
