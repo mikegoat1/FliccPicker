@@ -1,73 +1,152 @@
 // Variables
 var resultContentEl = document.querySelector("#result-content");
 
+var genre = document.location.search;
+console.log(genre);
 
+var urlGenres = 'https://cors-anywhere.herokuapp.com/https://netflix-unofficial.p.rapidapi.com/api/search?apiKey=917c1e408cmshe632e5d67';
 
 // Get parameters out of the URL
-function getParams() {
-        // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
-        // var searchParamsArr = document.location.search.split('&');
+// function getParams() {
+//         // Get the search params out of the URL (i.e. `?q=london&format=photo`) and convert it to an array (i.e. ['?q=london', 'format=photo'])
+//         var params = document.location.search;
       
-        // Get the query and format values
-        var genre = searchParamsArr[0].split('=').pop();
+//         // Get the query and format values
+//         var genre = params[0].split('=').pop();
+//         console.log(genre);
       
-        SearchApi(genre);
+//         SearchApi(genre);
+// };
+
+function printResults(resultObject) {
+        console.log(resultObject);
+
+        //Create div for result cards
+        var resultCard = document.createElement('div');
+        resultCard.classList.add('card', 'bg-light', 'text-dark', 'mb-3', 'p-3');
+
+        // Create div for body content on result cards
+        var resultBody = document.createElement('div');
+        resultBody.classList.add('card-body');
+        resultCard.append(resultBody);
+
+        // Create h3 element for result title
+        var movieTitle = document.createElement('h3');
+        movieTitle.textContent = resultObj.title;
+
+        var bodyContentEl = document.createElement('p');
+        bodyContentEl.innerHTML =
+        '<strong>Date:</strong> ' + resultObj.date + '<br/>';
+
+        if (resultObj.subject) {
+                bodyContentEl.innerHTML +=
+                '<strong>Subjects:</strong> ' + resultObj.subject.join(', ') + '<br/>';
+                } else {
+                bodyContentEl.innerHTML +=
+                '<strong>Subjects:</strong> No subject for this entry.';
+        }
+        if (resultObj.description) {
+                bodyContentEl.innerHTML +=
+                '<strong>Description:</strong> ' + resultObj.description[0];
+        } else {
+                bodyContentEl.innerHTML +=
+                '<strong>Description:</strong>  No description for this entry.';
+        };
+
+        var watchButtonEl = document.createElement('a');
+        watchButtonEl.textContent = 'Watch Now';
+        watchButtonEl.setAttribute('href', resultObj.url);
+        watchButtonEl.classList.add('btn', 'btn-dark');
+
+        var playlistButtonEl = document.createElement('a');
+        playlistButtonEl.textContent = 'Add to Playlist';
+        playlistButtonEl.setAttribute('href', resultObj.url);
+        playlistButtonEl.classList.add('btn', 'btn-dark');
+
+        var infoButtonEl = document.createElement('a');
+        infoButtonEl.textContent = 'More Info';
+        infoButtonEl.setAttribute('href', resultObj.url);
+        infoButtonEl.classList.add('btn', 'btn-dark');
+
+        resultBody.append(movieTitle, bodyContentEl, watchButtonEl, playlistButtonEl, infoButtonEl);
+
+        resultContentEl.append(resultCard);
 };
 
-// Fetch genres from API
-fetch("https://netflix-unofficial.p.rapidapi.com/api/genres", {
-        "method": "GET",
-        "headers": {
-                "x-rapidapi-key": "917c1e408cmshe632e5d6739846dp1cf501jsn9642ae4176f8",
-                "x-rapidapi-host": "netflix-unofficial.p.rapidapi.com"
-        }
-})
-.then(response => {
-        console.log(response);
-})
-.catch(err => {
-        console.error(err);
+fetch("https://netflix-unofficial.p.rapidapi.com/api/search", {
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "917c1e408cmshe632e5d6739846dp1cf501jsn9642ae4176f8",
+		"x-rapidapi-host": "netflix-unofficial.p.rapidapi.com"  
+	}
+        })
+        .then(response => {
+	        console.log(response);
+        })
+        .catch(err => {
+	console.error(err);
 });
-
-// Fetch search from API
-// fetch("https://netflix-unofficial.p.rapidapi.com/api/search?genre=Action", {
-// 	"method": "GET",
-// 	"headers": {
-// 		"x-rapidapi-key": "917c1e408cmshe632e5d6739846dp1cf501jsn9642ae4176f8",
-// 		"x-rapidapi-host": "netflix-unofficial.p.rapidapi.com"
-// 	}
-// })
-// .then(response => {
-// 	console.log(response);
-// })
-// .catch(err => {
-// 	console.error(err);
-// });
 
 // Function to search API
 function searchApi(genre) {
-        var locQueryUrl = "https://netflix-unofficial.p.rapidapi.com/api/search";
-      
-        if (genre) {
-                locQueryUrl = "https://netflix-unofficial.p.rapidapi.com/api/search?genre=" + genre;
-        };
-        
-        fetch(localQueryUrl), {
-                "method": "GET",
-                "headers": {
-                        "x-rapidapi-key": "917c1e408cmshe632e5d6739846dp1cf501jsn9642ae4176f8",
-                        "x-rapidapi-host": "netflix-unofficial.p.rapidapi.com"
-                }
-        }
-        .then(response => {
-                console.log(response);
-        })
-        .catch(err => {
-                console.error(err);
-        });
-};
 
-getParams();
+        var localQueryUrl = "https://netflix-unofficial.p.rapidapi.com/api/search";
+
+        if (genre) {
+                localQueryUrl = '"https://netflix-unofficial.p.rapidapi.com/api/search"' + genre + '/?fo=json';
+        }
+
+        fetch(localQueryUrl)
+                .then(function (response) {
+                        if (!response.ok) {
+                        throw response.json();
+                        }
+
+                        return response.json();
+                })
+                .then(function (localResponse) {
+                        resultTextEl.textContent = localResponse.genre;
+
+                        console.log(localResponse);
+
+                        if (!localResponse.results.length) {
+                                console.log('No results!');
+                                resultConteltEl.innerHTML = "<h3>No results found, sorry!</h3>";
+                        } else {
+                                resultContentEl.textContent = "";
+                                for (var i = 0; i < localResults.results.lengthl; i++) {
+                                printResults(localResponse.results[i]);
+                                }
+                        }
+                })
+                .catch(function (error) {
+                        console.error(error);
+                })
+};           
+
+searchApi(genre);
+
+        // .then(response => {
+        //         resultTextEl.textContent = response.genre;
+
+        //         console.log(response);
+
+        //         if (!response.results.length) {
+        //                 console.log("No results");
+        //                 resultConteltEl.innerHTML = "<h3>No results, try again!</h3>";
+        //         } else {
+        //                 resultContentEl.textContent = "";
+        //                 for (var i=0; i < response.results.length; i++) {
+        //                         printResults(response.results[i]);
+        //                 }
+        //         }
+        // })
+        // .catch(err => {
+        //         console.error(err);
+        // });
+
+// getParams();
+
         
 
 // };
@@ -83,60 +162,7 @@ getParams();
 //         searchAPI(genre)
 // };
 
-// function printResults(resultObject) {
-//         console.log(resultObject);
 
-//         // Create div for result cards
-//         var resultCard = document.createElement('div');
-//         resultCard.classList.add('card', 'bg-light', 'text-dark', 'mb-3', 'p-3');
-
-//         // Create div for body content on result cards
-//         var resultBody = document.createElement('div');
-//         resultBody.classList.add('card-body');
-//         resultCard.append(resultBody);
-
-//         // Create h3 element for result title
-//         var movieTitle = document.createElement('h3');
-//         movieTitle.textContent = resultObj.title;
-
-//         var bodyContentEl = document.createElement('p');
-//         bodyContentEl.innerHTML =
-//         '<strong>Date:</strong> ' + resultObj.date + '<br/>';
-
-//         if (resultObj.subject) {
-//                 bodyContentEl.innerHTML +=
-//                 '<strong>Subjects:</strong> ' + resultObj.subject.join(', ') + '<br/>';
-//                 } else {
-//                 bodyContentEl.innerHTML +=
-//                 '<strong>Subjects:</strong> No subject for this entry.';
-//         }
-//         if (resultObj.description) {
-//                 bodyContentEl.innerHTML +=
-//                 '<strong>Description:</strong> ' + resultObj.description[0];
-//         } else {
-//                 bodyContentEl.innerHTML +=
-//                 '<strong>Description:</strong>  No description for this entry.';
-//         };
-
-//         var watchButtonEl = document.createElement('a');
-//         watchButtonEl.textContent = 'Watch Now';
-//         watchButtonEl.setAttribute('href', resultObj.url);
-//         watchButtonEl.classList.add('btn', 'btn-dark');
-
-//         var playlistButtonEl = document.createElement('a');
-//         playlistButtonEl.textContent = 'Add to Playlist';
-//         playlistButtonEl.setAttribute('href', resultObj.url);
-//         playlistButtonEl.classList.add('btn', 'btn-dark');
-
-//         var infoButtonEl = document.createElement('a');
-//         infoButtonEl.textContent = 'More Info;
-//         infoButtonEl.setAttribute('href', resultObj.url);
-//         infoButtonEl.classList.add('btn', 'btn-dark');
-
-//         resultBody.append(movieTitle, bodyContentEl, watchButtonEl, playlistButtonEl, infoButtonEl);
-
-//         resultContentEl.append(resultCard);
-// };
 
 // function searchApi(genre) {
 
