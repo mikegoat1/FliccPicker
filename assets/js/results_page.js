@@ -7,7 +7,7 @@ var resultContentEl = document.querySelector("#result-content")
 function getParams() {
         // Get parameters from the URL
         var userParams = document.location.search.split("&");
-
+        console.log(userParams);
         var genre = userParams[1].split("=").pop();
 
         searchAPI(genre)
@@ -59,7 +59,7 @@ function printResults(resultObject) {
         playlistButtonEl.classList.add('btn', 'btn-dark');
 
         var infoButtonEl = document.createElement('a');
-        infoButtonEl.textContent = 'More Info;
+        infoButtonEl.textContent = 'More Info';
         infoButtonEl.setAttribute('href', resultObj.url);
         infoButtonEl.classList.add('btn', 'btn-dark');
 
