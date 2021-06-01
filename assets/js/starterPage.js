@@ -68,3 +68,18 @@ $("button[value=button]").on("click", function (event) {
     sourceCheck()
 });
 
+const settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://weather-com.p.rapidapi.com/v3/wx/forecast/daily/5day?geocode=34.080911%2C-118.270406&units=e&language=en",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "917c1e408cmshe632e5d6739846dp1cf501jsn9642ae4176f8",
+		"x-rapidapi-host": "weather-com.p.rapidapi.com"
+	}
+};
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+});
+

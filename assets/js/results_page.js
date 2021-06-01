@@ -1,10 +1,24 @@
 // Variables
+var storedMovieTitle = "";
+
 var resultContentEl = document.querySelector("#result-content");
+var playlistContentEl = document.querySelector("#playlist-content");
 
 var userParams = document.location.search;
 console.log(userParams);
 var genre = userParams.split("?").pop();
 console.log(genre)
+
+var playlistButtonEl = document.getElementById("playlist");
+
+resultContentEl.addEventListener("click", function(event) {
+    console.log(event.target);
+    // add to local storage
+    console.log("Here I am!")
+    if (event.target.matches("#playlist")){
+        localStorage.setItem("movieTitle", storedMovieTitle);
+    }
+});
 
 // function getParams() {
 //     // Get parameters from the URL
@@ -14,6 +28,26 @@ console.log(genre)
 //     console.log(genre);
 //     searchAPI(genre)
 // };
+
+function printPlaylist(playlistObject) {
+    console.log(playlistObject)
+
+    var playlistDiv = document.createElement("div");
+    playlistDiv.classList.add('playlist-div')
+
+    // Create ul for Playlist
+    var playlistBody = document.createElement("ul");
+    playlistBody.classList.add("playlist-body");
+    playlistCard.append(playlistBody);
+
+    // Create div for h3 playlist titles
+    var playlistTitle = document.createElement("li");
+    // Get playlist title from local storage
+    // playlistTitle.textContent = playlistObject.results[0].title;
+
+    playlistContentEl.append()
+    resultContentEl.append(resultCard);
+};
 
 function printResults(resultObject) {
     console.log(resultObject);
@@ -30,6 +64,8 @@ function printResults(resultObject) {
     // Create h3 element for result title
     var movieTitle = document.createElement('h3');
     movieTitle.textContent = resultObject.results[0].title;
+
+    storedMovieTitle = resultObject.results[0].title;
 
     var bodyContentEl = document.createElement('p');
     bodyContentEl.innerHTML =
@@ -53,17 +89,13 @@ function printResults(resultObject) {
     var watchButtonEl = document.createElement('a');
     watchButtonEl.textContent = 'Watch Now';
     watchButtonEl.setAttribute('href', resultObject.url);
+    watchButtonEl.setAttribute("id", "watch");
     watchButtonEl.classList.add('btn', 'btn-dark');
 
-    var playlistButtonEl = document.createElement('a');
+    var playlistButtonEl = document.createElement('button');
     playlistButtonEl.textContent = 'Add to Playlist';
-    playlistButtonEl.setAttribute('href', resultObject.url);
+    playlistButtonEl.setAttribute("id", "playlist");
     playlistButtonEl.classList.add('btn', 'btn-dark');
-
-    var infoButtonEl = document.createElement('a');
-    infoButtonEl.textContent = 'More Info';
-    infoButtonEl.setAttribute('href', resultObject.url);
-    infoButtonEl.classList.add('btn', 'btn-dark');
 
     resultBody.append(movieTitle, bodyContentEl, watchButtonEl, playlistButtonEl, infoButtonEl);
 
