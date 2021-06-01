@@ -1,99 +1,119 @@
 // Variables
 var resultContentEl = document.querySelector("#result-content");
 
-var genre = document.location.search;
-console.log(genre);
+var userParams = document.location.search;
+console.log(userParams);
+var genre = userParams.split("?").pop();
+console.log(genre)
 
-
-// var urlGenres = 'https://cors-anywhere.herokuapp.com/https://api.watchmode.com/v1/genres/?apiKey=eQskMVotZ04L0wctRWM1T3ALo76eT61EZHK8Ycx0';
-
-function getParams() {
-        // Get parameters from the URL
-        var userParams = document.location.search;
-        console.log(userParams);
-        var genre = userParams[1].split("=").pop();
-
-        searchAPI(genre)
-};
+// function getParams() {
+//     // Get parameters from the URL
+//     var userParams = document.location.search;
+//     console.log(userParams);
+//     var genre = userParams.split("=").pop();
+//     console.log(genre);
+//     searchAPI(genre)
+// };
 
 function printResults(resultObject) {
-        console.log(resultObject);
+    console.log(resultObject);
 
-        //Create div for result cards
-        var resultCard = document.createElement('div');
-        resultCard.classList.add('card', 'bg-light', 'text-dark', 'mb-3', 'p-3');
+    //Create div for result cards
+    var resultCard = document.createElement('div');
+    resultCard.classList.add('card', 'bg-light', 'text-dark', 'mb-3', 'p-3');
 
-        // Create div for body content on result cards
-        var resultBody = document.createElement('div');
-        resultBody.classList.add('card-body');
-        resultCard.append(resultBody);
+    // Create div for body content on result cards
+    var resultBody = document.createElement('div');
+    resultBody.classList.add('card-body');
+    resultCard.append(resultBody);
 
-        // Create h3 element for result title
-        var movieTitle = document.createElement('h3');
-        movieTitle.textContent = resultObj.title;
+    // Create h3 element for result title
+    var movieTitle = document.createElement('h3');
+    movieTitle.textContent = resultObject.results[0].title;
 
-        var bodyContentEl = document.createElement('p');
-        bodyContentEl.innerHTML =
-        '<strong>Date:</strong> ' + resultObj.date + '<br/>';
+    var bodyContentEl = document.createElement('p');
+    bodyContentEl.innerHTML =
+        '<strong>Date:</strong> ' + resultObject.date + '<br/>';
 
-        if (resultObj.subject) {
-                bodyContentEl.innerHTML +=
-                '<strong>Subjects:</strong> ' + resultObj.subject.join(', ') + '<br/>';
-                } else {
-                bodyContentEl.innerHTML +=
-                '<strong>Subjects:</strong> No subject for this entry.';
-        }
-        if (resultObj.description) {
-                bodyContentEl.innerHTML +=
-                '<strong>Description:</strong> ' + resultObj.description[0];
-        } else {
-                bodyContentEl.innerHTML +=
-                '<strong>Description:</strong>  No description for this entry.';
-        };
+    if (resultObject.subject) {
+        bodyContentEl.innerHTML +=
+            '<strong>Subjects:</strong> ' + resultObject.subject.join(', ') + '<br/>';
+    } else {
+        bodyContentEl.innerHTML +=
+            '<strong>Subjects:</strong> No subject for this entry.';
+    }
+    if (resultObject.description) {
+        bodyContentEl.innerHTML +=
+            '<strong>Description:</strong> ' + resultObject.description[0];
+    } else {
+        bodyContentEl.innerHTML +=
+            '<strong>Description:</strong>  No description for this entry.';
+    };
 
-        var watchButtonEl = document.createElement('a');
-        watchButtonEl.textContent = 'Watch Now';
-        watchButtonEl.setAttribute('href', resultObj.url);
-        watchButtonEl.classList.add('btn', 'btn-dark');
+    var watchButtonEl = document.createElement('a');
+    watchButtonEl.textContent = 'Watch Now';
+    watchButtonEl.setAttribute('href', resultObject.url);
+    watchButtonEl.classList.add('btn', 'btn-dark');
 
-        var playlistButtonEl = document.createElement('a');
-        playlistButtonEl.textContent = 'Add to Playlist';
-        playlistButtonEl.setAttribute('href', resultObj.url);
-        playlistButtonEl.classList.add('btn', 'btn-dark');
+    var playlistButtonEl = document.createElement('a');
+    playlistButtonEl.textContent = 'Add to Playlist';
+    playlistButtonEl.setAttribute('href', resultObject.url);
+    playlistButtonEl.classList.add('btn', 'btn-dark');
 
-        var infoButtonEl = document.createElement('a');
-        infoButtonEl.textContent = 'More Info';
-        infoButtonEl.setAttribute('href', resultObj.url);
-        infoButtonEl.classList.add('btn', 'btn-dark');
+    var infoButtonEl = document.createElement('a');
+    infoButtonEl.textContent = 'More Info';
+    infoButtonEl.setAttribute('href', resultObject.url);
+    infoButtonEl.classList.add('btn', 'btn-dark');
 
-        resultBody.append(movieTitle, bodyContentEl, watchButtonEl, playlistButtonEl, infoButtonEl);
+    resultBody.append(movieTitle, bodyContentEl, watchButtonEl, playlistButtonEl, infoButtonEl);
 
-        resultContentEl.append(resultCard);
+    resultContentEl.append(resultCard);
 };
 
 function searchApi(genre) {
 
-        var localQueryUrl = "https://netflix-unofficial.p.rapidapi.com/api/search";
+    var localQueryUrl = "https://unogsng.p.rapidapi.com/search?newdate=2002-06-01&orderby=rating&limit=100&subtitle=english&audio=english&offset=0";
 
-        if (genre) {
-                localQueryUrl = "https://netflix-unofficial.p.rapidapi.com/api/search?genre=" + genre;
-        }
+    if (genre) {
+        localQueryUrl = "https://unogsng.p.rapidapi.com/search?newdate=2002-06-01&" + genre + "orderby=rating&limit=100&subtitle=english&audio=english&offset=0";
 
-        fetch(localQueryUrl, {
-	"method": "GET",
-	"headers": {
-		"x-rapidapi-key": "917c1e408cmshe632e5d6739846dp1cf501jsn9642ae4176f8",
-		"x-rapidapi-host": "netflix-unofficial.p.rapidapi.com"  
-	}
-        })
-        .then(response => {
-	        console.log(response);
-        })
-        .catch(err => {
-	console.error(err);
+        settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": localQueryUrl,
+            "method": "GET",
+            "headers": {
+                "x-rapidapi-key": "a905819813mshb487c4aa03c8e57p1f0687jsnfe693ad390a5",
+                "x-rapidapi-host": "unogsng.p.rapidapi.com"
+            }
+        };
+        
+        $.ajax(settings).done(function (response) {
+            console.log(response);
+
+            printResults(response)
+
+
         });
-};        
 
+    }
+};
+
+//action get
+settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://unogsng.p.rapidapi.com/search?newdate=2016-05-25&genrelist=801362&orderby=rating&limit=100&subtitle=english&audio=english&offset=0",
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-key": "a905819813mshb487c4aa03c8e57p1f0687jsnfe693ad390a5",
+        "x-rapidapi-host": "unogsng.p.rapidapi.com"
+    }
+};
+
+$.ajax(settings).done(function (response) {
+    console.log(response);
+});
 
 
 searchApi(genre);
@@ -110,7 +130,7 @@ searchApi(genre);
 //         },
 //         {
 //         "genre": "Children & Family",
-//         "netflixid": 7424
+//         "netflixid": 783
 //         },
 //         {
 //         "genre": "Classic Films",
@@ -155,5 +175,9 @@ searchApi(genre);
 //         {
 //         "genre": "Psychological Thrillers",
 //         "netflixid": 5505
+//         },
+//         {
+//         "genre": "Western",
+//         "netflixid": 7700
 //         },
 // ];
