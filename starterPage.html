@@ -24,50 +24,50 @@
 <body>
     <!-- FliccPicker Image -->
     <div class="class col-6 justify-content-center center align-content-center d-flex">
-        <img src="assets/images/FLICCPICKER.png" class="img-flicc" alt="...">
+        <img src="assets/images/FLICCPICKER.png" class="img-flicc" alt="..." data-bs-toggle="offcanvas" data-bs-target="#offcanvasTop" aria-controls="offcanvasTop">
+            
+        <div class="offcanvas offcanvas-top" tabindex="-1" id="offcanvasTop" aria-labelledby="offcanvasTopLabel">
+            <div class="offcanvas-header">
+                <h5 id="offcanvasTopLabel">Welcome to FliccPicker!</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+            Feel like you've seen everything on Netflix? Tired of endless scrolling? Let us pick your next flicc! Just select a genre and we'll deliver a random list of films for you to choose from!
+            </div>
+        </div>
     </div>
     
     <div class="container justify-content-center d-flex">
 
-        <div class="row mt-4">
+        <form id="search-form">
 
-            <div class="col-6">
-                <!-- Button for Streaming Services -->
-                <div class="form">
+            <div class="row">
 
-                    <form id="search-form" class="form w-100">
-                        
-                        <select id="source-input" class="form-input w-100">
-                            <option value="" disabled selected>Select a streaming Service...</option>
-                            <option value="netflix">Netflix</option>
-                        </select>
+                <select id="genre-input" class="form-select-lg mb-2">
+                    <option value="" disabled selected>Select a genre...</option>
+                    <option value="Action">Action & Adventure</option>
+                    <option value="Anime">Anime</option>
+                    <option value="Children">Children & Family</option>
+                    <option value="Classic">Classic</option>
+                    <option value="Comedies">Comedy</option>
+                    <option value="Cult">Cult Classics</option>
+                    <option value="Documentaries">Documentary</option>
+                    <option value="Dramas">Drama</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Independent">Indie</option>
+                    <option value="Musicals">Music & Musicals</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Sci-Fi">Sci-Fi & Fantasy</option>
+                    <option value="Sports">Sports</option>
+                    <option value="Thrillers">Thrillers</option>
+                </select>
+            </div>
 
-                        <select id="genre-input" class="form-input w-100">
-                            <option value="" disabled selected>Select a genre...</option>
-                            <option value="action">Action & Adventure</option>
-                            <option value="anime">Anime Features</option>
-                            <option value="children">Children & Family Mogies</option>
-                            <option value="classic">Classic Movies</option>
-                            <option value="comedies">Comedies</option>
-                            <option value="documentaries">Documentaries</option>
-                            <option value="dramas">Dramas</option>
-                            <option value="horror">Horror Movies</option>
-                            <option value="independent">Independent Movies</option>
-                            <option value="music">Music & Musicals</option>
-                            <option value="romantic">Romantic Movies</option>
-                            <option value="sci-fi">Sci-Fi & Fantasy</option>
-                            <option value="sports">Sports Movies</option>
-                            <option value="thrillers">Thrillers</option>
-                        </select>
-
-                        <button value="button" class="btn btn-info btn-block">Pick my flicc</button>
-
-                    </form>
-
-                </div>
+            <div class="row">
+                <button value="button" class="btn btn-warning btn-lg">PICK MY FLICC</button>
             </div>
             
-        </div>
+        </form>
 
     </div>
 

@@ -60,11 +60,8 @@ function sourceCheck() {
     let queryString = "/results_page.html?genre=" + genreInputVal;
 
     location.assign(queryString);
-
-
-
-
-}
+    
+};
 //On click of submit button calls function sourceChecks
 $("button[value=button]").on("click", function (event) {
     event.preventDefault();
