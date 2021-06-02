@@ -18,26 +18,26 @@ resultContentEl.addEventListener("click", function(event) {
     if (event.target.matches("#playlist")){
         localStorage.setItem("movieTitle", storedMovieTitle);
     }
+    printPlaylist();
 });
 
-function printPlaylist(playlistObject) {
-    console.log(playlistObject)
+function printPlaylist() {
+    console.log("What's up?")
 
-    var playlistDiv = document.createElement("div");
-    playlistDiv.classList.add('playlist-div')
+    // Get Title from local storage
+    document.getElementById("playlist").innerHTML = localStorage.getItem(storedMovieTitle);
+    console.log(storedMovieTitle);
 
     // Create ul for Playlist
-    var playlistBody = document.createElement("ul");
-    playlistBody.classList.add("playlist-body");
-    playlistCard.append(playlistBody);
+    var playlistUl = document.querySelector("#my-playlist");
 
-    // Create div for h3 playlist titles
-    var playlistTitle = document.createElement("li");
-    // Get playlist title from local storage
-    // playlistTitle.textContent = playlistObject.results[0].title;
+    var playlistLi = document.createElement("li");
+    playlistLi.innerHTML = storedMovieTitle;
+    // playlistLi.setAttribute("style", "display: block;");
 
-    playlistContentEl.append()
-    resultContentEl.append(resultCard);
+    playlistUl.appendChild(playlistLi);
+
+    // playlistContentEl.appendChild(playlistUl);
 };
 
 function printResults(resultObject) {
