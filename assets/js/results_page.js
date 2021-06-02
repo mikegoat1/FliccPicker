@@ -20,15 +20,6 @@ resultContentEl.addEventListener("click", function(event) {
     }
 });
 
-// function getParams() {
-//     // Get parameters from the URL
-//     var userParams = document.location.search;
-//     console.log(userParams);
-//     var genre = userParams.split("=").pop();
-//     console.log(genre);
-//     searchAPI(genre)
-// };
-
 function printPlaylist(playlistObject) {
     console.log(playlistObject)
 
@@ -54,7 +45,8 @@ function printResults(resultObject) {
 
     //Create div for result cards
     var resultCard = document.createElement('div');
-    resultCard.classList.add('card', 'bg-light', 'text-white', 'mb-3', 'p-3');
+    resultCard.classList.add('card',  'text-white', 'mb-3', 'p-3');
+    resultCard.setAttribute("style", "border-color: #185ADB; background-color: #FFC947;")
 
     // Create div for body content on result cards
     var resultBody = document.createElement('div');
