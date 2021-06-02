@@ -63,7 +63,9 @@
     height: 100px;
     }
 
-  
+    .navbar{
+      padding-bottom: 0;
+    }
 
  
   
