@@ -1,7 +1,7 @@
-.sidenav {
+/* .sidenav {
     height: 250%;
     width: 225px;
-    position: fixed;
+    position: absolute;
     z-index: 3;
     top: 20;
     left: 0;
@@ -16,7 +16,7 @@
     font-size: 25px;
     color: #faf9f9;
     display: block;
-  }
+  } */
 
   .container-fluid {
     position: fixed;
@@ -42,7 +42,7 @@
     /* padding: 50px; */
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: normal;
     
 
   }
