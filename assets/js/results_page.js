@@ -50,7 +50,7 @@ function printPlaylist(playlistObject) {
 };
 
 function printResults(resultObject) {
-    console.log(resultObject);
+    // console.log(resultObject);
 
     //Create div for result cards
     var resultCard = document.createElement('div');
@@ -63,24 +63,24 @@ function printResults(resultObject) {
 
     // Create h3 element for result title
     var movieTitle = document.createElement('h3');
-    movieTitle.textContent = resultObject.results[0].title;
+    movieTitle.textContent = resultObject.title;
 
-    storedMovieTitle = resultObject.results[0].title;
+    storedMovieTitle = resultObject.title;
 
     var bodyContentEl = document.createElement('p');
     bodyContentEl.innerHTML =
-        '<strong>Date:</strong> ' + resultObject.results[0].year + '<br/>';
+        '<strong>Date:</strong> ' + resultObject.year + '<br/>';
 
-    if (resultObject.results[0].imdbrating) {
+    if (resultObject.imdbrating) {
         bodyContentEl.innerHTML +=
-            '<strong>Ratings:</strong> ' + resultObject.results[0].imdbrating+ '<br/>';
+            '<strong>Ratings:</strong> ' + resultObject.imdbrating+ '<br/>';
     } else {
         bodyContentEl.innerHTML +=
             '<strong>Ratings:</strong> No subject for this entry.';
     }
-    if (resultObject.results[0].synopsis) {
+    if (resultObject.synopsis) {
         bodyContentEl.innerHTML +=
-            '<strong>Description:</strong> ' + resultObject.results[0].synopsis;
+            '<strong>Description:</strong> ' + resultObject.synopsis;
     } else {
         bodyContentEl.innerHTML +=
             '<strong>Description:</strong>  No description for this entry.';
@@ -122,9 +122,15 @@ function searchApi(genre) {
         
         $.ajax(settings).done(function (response) {
             console.log(response);
-            console.log(response.results[0].imdbrating)
+            
+            
 
-            printResults(response)
+            for(let i=0; i<9; i++){
+                let randomValue = response.results[Math.floor(Math.random()*response.results.length)];
+                console.log(randomValue)
+                printResults(randomValue)
+            }
+            
 
 
         });
