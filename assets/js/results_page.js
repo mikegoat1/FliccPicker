@@ -139,85 +139,23 @@ function searchApi(genre) {
     }
 };
 
-//action get
-settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://unogsng.p.rapidapi.com/search?newdate=2016-05-25&genrelist=801362&orderby=rating&limit=100&subtitle=english&audio=english&offset=0",
-    "method": "GET",
-    "headers": {
-        "x-rapidapi-key": "a905819813mshb487c4aa03c8e57p1f0687jsnfe693ad390a5",
-        "x-rapidapi-host": "unogsng.p.rapidapi.com"
-    }
+ settings = {
+	"async": true,
+	"crossDomain": true,
+	"url": "https://geek-jokes.p.rapidapi.com/api?format=json",
+	"method": "GET",
+	"headers": {
+		"x-rapidapi-key": "a905819813mshb487c4aa03c8e57p1f0687jsnfe693ad390a5",
+		"x-rapidapi-host": "geek-jokes.p.rapidapi.com"
+	}
 };
 
-$.ajax(settings).done(function (response) {
-    console.log(response);
-});
+$.ajax(settings).done(function (jokes) {
+	console.log(jokes);
+$(".jokes").text(jokes.joke)
 
+});
 
 searchApi(genre);
 
 
-// var results = [
-//         {
-//         "genre": "Action",
-//         "netflixid": 801362
-//         },
-//         {
-//         "genre": "Anime",
-//         "netflixid": 7424
-//         },
-//         {
-//         "genre": "Children & Family",
-//         "netflixid": 783
-//         },
-//         {
-//         "genre": "Classic Films",
-//         "netflixid": 31574
-//         },
-//         {
-//         "genre": "Laugh-Out-Loud Comedies",
-//         "netflixid": 1333288
-//         },
-//         {
-//         "genre": "Documentaries",
-//         "netflixid": 6839
-//         },
-//         {
-//         "genre": "Drama",
-//         "netflixid": 5763
-//         },
-//         {
-//         "genre": "Horror Films",
-//         "netflixid": 8711
-//         },
-//         {
-//         "genre": "Independent Films",
-//         "netflixid": 7077
-//         },
-//         {
-//         "genre": "Musicals",
-//         "netflixid": 13335
-//         },
-//         {
-//         "genre": "Steamy Romantic Films",
-//         "netflixid": 35800
-//         },
-//         {
-//         "genre": "Sci-Fi Adventure",
-//         "netflixid": 6926
-//         },
-//         {
-//         "genre": "Sports Films",
-//         "netflixid": 4370
-//         },
-//         {
-//         "genre": "Psychological Thrillers",
-//         "netflixid": 5505
-//         },
-//         {
-//         "genre": "Western",
-//         "netflixid": 7700
-//         },
-// ];
