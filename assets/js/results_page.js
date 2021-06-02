@@ -54,11 +54,12 @@ function printResults(resultObject) {
 
     //Create div for result cards
     var resultCard = document.createElement('div');
-    resultCard.classList.add('card', 'bg-light', 'text-dark', 'mb-3', 'p-3');
+    resultCard.classList.add('card', 'bg-light', 'text-white', 'mb-3', 'p-3');
 
     // Create div for body content on result cards
     var resultBody = document.createElement('div');
     resultBody.classList.add('card-body');
+    resultBody.setAttribute("style","background-size: cover; background-image: url("+resultObject.img+")")
     resultCard.append(resultBody);
 
     // Create h3 element for result title
@@ -98,6 +99,7 @@ function printResults(resultObject) {
     playlistButtonEl.classList.add('btn', 'btn-dark','m-2');
 
     resultBody.append(movieTitle, bodyContentEl, watchButtonEl, playlistButtonEl);
+    
 
     resultContentEl.append(resultCard);
 };
@@ -127,7 +129,6 @@ function searchApi(genre) {
 
             for(let i=0; i<9; i++){
                 let randomValue = response.results[Math.floor(Math.random()*response.results.length)];
-                console.log(randomValue)
                 printResults(randomValue)
             }
             
