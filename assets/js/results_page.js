@@ -69,18 +69,18 @@ function printResults(resultObject) {
 
     var bodyContentEl = document.createElement('p');
     bodyContentEl.innerHTML =
-        '<strong>Date:</strong> ' + resultObject.date + '<br/>';
+        '<strong>Date:</strong> ' + resultObject.results[0].year + '<br/>';
 
-    if (resultObject.subject) {
+    if (resultObject.results[0].imdbrating) {
         bodyContentEl.innerHTML +=
-            '<strong>Subjects:</strong> ' + resultObject.subject.join(', ') + '<br/>';
+            '<strong>Ratings:</strong> ' + resultObject.results[0].imdbrating+ '<br/>';
     } else {
         bodyContentEl.innerHTML +=
-            '<strong>Subjects:</strong> No subject for this entry.';
+            '<strong>Ratings:</strong> No subject for this entry.';
     }
-    if (resultObject.description) {
+    if (resultObject.results[0].synopsis) {
         bodyContentEl.innerHTML +=
-            '<strong>Description:</strong> ' + resultObject.description[0];
+            '<strong>Description:</strong> ' + resultObject.results[0].synopsis;
     } else {
         bodyContentEl.innerHTML +=
             '<strong>Description:</strong>  No description for this entry.';
@@ -95,7 +95,7 @@ function printResults(resultObject) {
     var playlistButtonEl = document.createElement('button');
     playlistButtonEl.textContent = 'Add to Playlist';
     playlistButtonEl.setAttribute("id", "playlist");
-    playlistButtonEl.classList.add('btn', 'btn-dark');
+    playlistButtonEl.classList.add('btn', 'btn-dark','m-2');
 
     resultBody.append(movieTitle, bodyContentEl, watchButtonEl, playlistButtonEl);
 
@@ -122,6 +122,7 @@ function searchApi(genre) {
         
         $.ajax(settings).done(function (response) {
             console.log(response);
+            console.log(response.results[0].imdbrating)
 
             printResults(response)
 
