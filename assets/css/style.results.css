@@ -38,8 +38,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    /* adjusted */
-    line-height: 1.1;
+    
 
   }
 
@@ -64,7 +63,9 @@
     height: 100px;
     }
 
-  
+    .navbar{
+      padding-bottom: 0;
+    }
 
  
   
