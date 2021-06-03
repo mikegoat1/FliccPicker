@@ -1,7 +1,7 @@
 // Variables
-var storedMovieTitle = "";
+var storedMovieTitle;
 var getList = [];
-var setList = [];
+
 
 var resultContentEl = document.querySelector("#result-content");
 var playlistContentEl = document.querySelector("#playlist-content");
@@ -11,7 +11,6 @@ console.log(userParams);
 var genre = userParams.split("?").pop();
 console.log(genre)
 
-var playlistButtonEl = document.querySelectorAll("#playlist");
 
 
 resultContentEl.addEventListener("click", function (event) {
@@ -23,7 +22,8 @@ resultContentEl.addEventListener("click", function (event) {
     console.log("Here I am!")
     if (event.target.matches("#playlist")) {
 
-        let stored = localStorage.getItem("movieTitle") || [];
+        let stored = localStorage.getItem("movieTitle");
+        if(stored){
         let optimizedStored = JSON.parse(stored);
         getList=optimizedStored;
 
@@ -33,13 +33,25 @@ resultContentEl.addEventListener("click", function (event) {
         var playlistTitles = document.createElement("li");
         playlistTitles.innerHTML = storedMovieTitle;
         $("#ul").append(playlistTitles);
+    } else {
+        getList.push(storedMovieTitle);
+        console.log(getList)
+        localStorage.setItem("movieTitle", JSON.stringify(getList));
+        var playlistTitles = document.createElement("li");
+        playlistTitles.innerHTML = storedMovieTitle;
+        $("#ul").append(playlistTitles);
+
+    }
+
     }
 });
 
 function printPlaylist() {
 
-    let stored = localStorage.getItem("movieTitle") || [];
+    let stored = localStorage.getItem("movieTitle");
+    if(stored){
 
+    
     let optimizedStored = JSON.parse(stored);
     console.log(JSON.parse(stored))
 
@@ -53,16 +65,7 @@ function printPlaylist() {
         $("#ul").append(playlistTitles);
 
     }
-    // playlistBody.classList.add("playlist-body");
-    // playlistCard.append(playlistBody);
-
-    // Create div for h3 playlist titles
-
-    // Get playlist title from local storage
-    // playlistTitle.textContent = playlistObject.results[0].title;
-
-    // playlistContentEl.append()
-    // resultContentEl.append(resultCard);
+    }
 };
 
 function printResults(resultObject) {
