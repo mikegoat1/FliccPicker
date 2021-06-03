@@ -42,7 +42,6 @@ resultContentEl.addEventListener("click", function (event) {
         }
 
     }
-    printPlaylist();
 });
 
 function printPlaylist() {
@@ -65,7 +64,6 @@ function printPlaylist() {
 
         }
     }
-
 };
 
 function printResults(resultObject) {
