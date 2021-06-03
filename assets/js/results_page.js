@@ -11,8 +11,6 @@ console.log(userParams);
 var genre = userParams.split("?").pop();
 console.log(genre)
 
-
-
 resultContentEl.addEventListener("click", function (event) {
     console.log(event.target.value);
     event.stopPropagation();
@@ -23,25 +21,25 @@ resultContentEl.addEventListener("click", function (event) {
     if (event.target.matches("#playlist")) {
 
         let stored = localStorage.getItem("movieTitle");
-        if(stored){
-        let optimizedStored = JSON.parse(stored);
-        getList=optimizedStored;
+        if (stored) {
+            let optimizedStored = JSON.parse(stored);
+            getList = optimizedStored;
 
-        getList.push(storedMovieTitle);
-        console.log(getList)
-        localStorage.setItem("movieTitle", JSON.stringify(getList));
-        var playlistTitles = document.createElement("li");
-        playlistTitles.innerHTML = storedMovieTitle;
-        $("#ul").append(playlistTitles);
-    } else {
-        getList.push(storedMovieTitle);
-        console.log(getList)
-        localStorage.setItem("movieTitle", JSON.stringify(getList));
-        var playlistTitles = document.createElement("li");
-        playlistTitles.innerHTML = storedMovieTitle;
-        $("#ul").append(playlistTitles);
+            getList.push(storedMovieTitle);
+            console.log(getList)
+            localStorage.setItem("movieTitle", JSON.stringify(getList));
+            var playlistTitles = document.createElement("li");
+            playlistTitles.innerHTML = storedMovieTitle;
+            $("#ul").append(playlistTitles);
+        } else {
+            getList.push(storedMovieTitle);
+            console.log(getList)
+            localStorage.setItem("movieTitle", JSON.stringify(getList));
+            var playlistTitles = document.createElement("li");
+            playlistTitles.innerHTML = storedMovieTitle;
+            $("#ul").append(playlistTitles);
 
-    }
+        }
 
     }
 });
@@ -49,22 +47,22 @@ resultContentEl.addEventListener("click", function (event) {
 function printPlaylist() {
 
     let stored = localStorage.getItem("movieTitle");
-    if(stored){
-
-    
-    let optimizedStored = JSON.parse(stored);
-    console.log(JSON.parse(stored))
+    if (stored) {
 
 
-    // Create ul for Playlist
+        let optimizedStored = JSON.parse(stored);
+        console.log(JSON.parse(stored))
 
-    for (i = 0; i < optimizedStored.length; i++) {
-        var playlistTitles = document.createElement("li");
-        console.log(optimizedStored[i])
-        playlistTitles.innerHTML = optimizedStored[i];
-        $("#ul").append(playlistTitles);
 
-    }
+        // Create ul for Playlist
+
+        for (i = 0; i < optimizedStored.length; i++) {
+            var playlistTitles = document.createElement("li");
+            console.log(optimizedStored[i])
+            playlistTitles.innerHTML = optimizedStored[i];
+            $("#ul").append(playlistTitles);
+
+        }
     }
 };
 
@@ -110,7 +108,7 @@ function printResults(resultObject) {
 
     var watchButtonEl = document.createElement('a');
     watchButtonEl.textContent = 'Watch Now';
-    watchButtonEl.setAttribute('href', resultObject.url);
+    watchButtonEl.setAttribute('href', "https://www.netflix.com/title/" + resultObject.nfid);
     watchButtonEl.setAttribute("id", "watch");
     watchButtonEl.classList.add('btn', 'btn-dark');
 
@@ -152,6 +150,7 @@ function searchApi(genre) {
             for (let i = 0; i < 9; i++) {
                 let randomValue = response.results[Math.floor(Math.random() * response.results.length)];
                 printResults(randomValue)
+                
             }
 
 
