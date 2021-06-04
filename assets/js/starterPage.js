@@ -57,7 +57,7 @@ function sourceCheck() {
     let sourceInputVal = $("#source-input").val(); 
     console.log(genreInputVal);
 
-    let queryString = "/FliccPicker/results_page.html?genrelist=" + genreInputVal;
+    let queryString = "https://randonrussell85.github.io/FliccPicker/results_page.html?genrelist=" + genreInputVal;
 
     location.assign(queryString);
     
