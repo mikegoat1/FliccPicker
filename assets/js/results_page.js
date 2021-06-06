@@ -5,12 +5,12 @@ var getList = [];
 
 var resultContentEl = document.querySelector("#result-content");
 var playlistContentEl = document.querySelector("#playlist-content");
-
+//search bar url
 var userParams = document.location.search;
 console.log(userParams);
 var genre = userParams.split("?").pop();
 console.log(genre)
-
+//
 resultContentEl.addEventListener("click", function (event) {
     console.log(event.target.value);
     event.stopPropagation();
