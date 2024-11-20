@@ -150,7 +150,7 @@ function searchApi(genre) {
             for (let i = 0; i < 9; i++) {
                 let randomValue = response.results[Math.floor(Math.random() * response.results.length)];
                 printResults(randomValue)
-                
+
             }
 
 
@@ -160,22 +160,23 @@ function searchApi(genre) {
     }
 };
 
-settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://geek-jokes.p.rapidapi.com/api?format=json",
-    "method": "GET",
-    "headers": {
-        "x-rapidapi-key": "a905819813mshb487c4aa03c8e57p1f0687jsnfe693ad390a5",
-        "x-rapidapi-host": "geek-jokes.p.rapidapi.com"
-    }
+
+const settings = {
+	async: true,
+	crossDomain: true,
+	url: 'https://geek-jokes1.p.rapidapi.com/',
+	method: 'GET',
+	headers: {
+		'x-rapidapi-key': 'e63631f8d1msh168f938e27f4288p179d82jsn16e3f45361fa',
+		'x-rapidapi-host': 'geek-jokes1.p.rapidapi.com'
+	}
 };
 
-$.ajax(settings).done(function (jokes) {
-    console.log(jokes);
-    $(".jokes").text(jokes.joke)
-
+$.ajax(settings).done(function (response) {
+	console.log(response);
+    $(".jokes").text(response.joke)
 });
+
 
 searchApi(genre);
 

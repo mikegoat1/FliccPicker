@@ -1,75 +1,85 @@
 .sidenav {
-    height: 250%;
-    width: 225px;
-    position: absolute;
-    z-index: 1;
-    top: 20;
-    left: 0;
-    background-color: rgb(150, 150, 151);
-    overflow-x: clip;
-    padding-top: 20px;
-  }
-  
-  .sidenav a {
-    padding: 6px 8px 6px 16px;
-    text-decoration: none;
-    font-size: 25px;
-    color: #faf9f9;
-    display: block;
-  }
-  
-  .sidenav a:hover {
-    color: #f1f1f1;
-  }
+  height: 250%;
+  width: 225px;
+  position: absolute;
+  z-index: 1;
+  top: 20;
+  left: 0;
+  background-color: rgb(150, 150, 151);
+  overflow-x: clip;
+  padding-top: 20px;
+}
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #faf9f9;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* adjusted */
+.topRight {
+  margin-left: 475px;
+}
+
+.main {
+  margin-left: 265px;
+  /* Same as the width of the sidenav */
+  font-size: 30px;
+  /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+.products {
+  flex: 1;
+  background-color: #fff;
+  /* padding: 50px; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+
+}
+
+.card {
+  border-style: solid;
+  border-width: 30px;
+  border-radius: 25px;
+  padding: px;
+  box-shadow: 10px 10px 5px #070707;
   /* adjusted */
-  .topRight{
-    margin-left: 475px;
+  margin: 20px;
+  width: 380px;
+}
+
+/* adjusted */
+.card {
+  font-size: 16px;
+}
+
+/* adjusted */
+.card-img, .card-img-bottom, .card-img-top {
+  width: 100%;
+  height: 100px;
+}
+
+.navbar {
+  padding-bottom: 0;
+}
+
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
   }
-  .main {
-    margin-left: 265px; /* Same as the width of the sidenav */
-    font-size: 30px; /* Increased text to enable scrolling */
-    padding: 0px 10px;
+
+  .sidenav a {
+    font-size: 18px;
   }
-
-  .products {
-    flex: 1;
-    background-color: #fff;
-    /* padding: 50px; */
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    
-
-  }
-
-  .card {
-    border-style: solid;
-    border-width: 30px;
-    border-radius: 25px;
-    padding: px;
-    box-shadow: 10px 10px 5px #070707;
-    /* adjusted */
-    margin: 20px;
-    width: 380px;
-  }
-    /* adjusted */
-  .card {
-    font-size: 16px;
-    }
-
-    /* adjusted */
-  .card-img, .card-img-bottom, .card-img-top {
-    width: 100%;
-    height: 100px;
-    }
-
-    .navbar{
-      padding-bottom: 0;
-    }
-
- 
-  
-  @media screen and (max-height: 450px) {
-    .sidenav {padding-top: 15px;}
-    .sidenav a {font-size: 18px;}
-  }
+}
