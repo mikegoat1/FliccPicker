@@ -1,8 +1,8 @@
-$(document).ready(function() {
+$(document).ready(function () {
     // Load genres from genres.json and populate the select element
-    $.getJSON('../../data/genres.json', function(data) {
+    $.getJSON('../../data/genres.json', function (data) {
         let genreSelect = $('#genre-input');
-        $.each(data, function(index, genre) {
+        $.each(data, function (index, genre) {
             console.log(genre);
             genreSelect.append($('<option>', {
                 value: genre.genre,
@@ -16,8 +16,7 @@ $(document).ready(function() {
         let genreInputVal = $("#genre-input").val();
         // console.log(genreInputVal);
 
-        let queryString = "http://localhost:5500/views/results_page.html?genrelist=" + genreInputVal;
-
+        let queryString = "http://localhost:5500/views/results_page.html?genrelist=" + encodeURIComponent(genreInputVal);
         document.location.replace(queryString);
     }
 

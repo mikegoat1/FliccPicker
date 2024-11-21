@@ -55,32 +55,36 @@ $(document).ready(function () {
     // Function to create a movie card
     function createMovieCard(movie) {
         const resultCard = $('<div>', { class: 'card text-white mb-3 p-3', style: 'border-color: #185ADB; background-color: #FFC947;' });
-        const resultBody = $('<div>', { class: 'card-body', style: 'background-size: cover; background-image: url(' + movie.backdrop_path + ')' });
+        const resultBody = $('<div>', { class: 'card-body', style: 'background-size: contain; background-image: url(' + movie.backdrop_path + ')' });
         const movieTitle = $('<h3>').text(movie.title);
         const bodyContentEl = $('<p>').html('<strong>Date:</strong> ' + movie.release_date + '<br/>' +
             '<strong>Ratings:</strong> ' + (movie.imdbrating || 'No rating for this entry.') + '<br/>' +
             '<strong>Description:</strong> ' + (movie.overview || 'No description for this entry.'));
         const watchButtonEl = $('<a>', { class: 'btn btn-dark', href: 'https://www.netflix.com/title/' + movie._id, text: 'Watch Now' });
         const favoriteButtonEl = $('<button>', { class: 'btn btn-dark m-2', text: 'Add to Favorites', value: movie.title, id: 'favorite' });
-
         resultBody.append(movieTitle, bodyContentEl, watchButtonEl, favoriteButtonEl);
         resultCard.append(resultBody);
         $('#result-content').append(resultCard);
     }
-
     // Event listener for the favorite button
     $('#result-content').on('click', '#favorite', function (event) {
         const movieTitle = $(this).val();
         console.log('Favorite:', movieTitle);
-        // Add to local storage or handle favorite logic here
+        addToFavorites(movieTitle);
     });
-
+    function addToFavorites(movieTitle) {
+        let favorites = JSON.parse(localStorage.getItem('favorites')) || [];
+        if (!favorites.includes(movieTitle)) {
+            favorites.push(movieTitle);
+            localStorage.setItem('favorites', JSON.stringify(favorites));
+        }
+    }
     // Grabs Selected from Starter Page
     function sourceCheck() {
         let genreInputVal = $("#genre-input").val();
         console.log(genreInputVal);
 
-        let queryString = "http://localhost:5500/results_page.html?genrelist=" + encodeURIComponent(genreInputVal);
+        let queryString = "http://localhost:5500/views/results_page.html?genrelist=" + encodeURIComponent(genreInputVal);
 
         document.location.replace(queryString);
     }
