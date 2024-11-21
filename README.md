@@ -1,42 +1,56 @@
- # FliccPicker <img src=https://img.shields.io/badge/license-MIT-blue/>
+# FliccPicker <img src=https://img.shields.io/badge/license-MIT-blue/>
 
 ## Description
 
-
-This application helps you get out of the Netflix to many choices blues. It is meant to help you choose a show or movie when there is to many to choose from. 
+FliccPicker is an application designed to help you overcome the overwhelming number of choices on Netflix. If you find yourself endlessly scrolling through options without being able to decide what to watch, FliccPicker is here to help. By selecting a genre, FliccPicker will provide you with a curated list of movies or shows to choose from, making your decision easier and quicker.
 
 ## Table of Contents
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [Credits](#credits)
-- [Features](#features)
-- [Liscense](#liscense)
-
+- [FliccPicker ](#fliccpicker-)
+  - [Description](#description)
+  - [Table of Contents](#table-of-contents)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Tools Used](#tools-used)
+  - [Credits](#credits)
+  - [Features](#features)
+  - [License](#license)
 
 ## Installation
 
-To run this locally you just need to link the ssh/http from my GitHub. Once inside your preferred Editor run an npm install. After completion you can just run the site from the terminal. Or you can go straight to my deployed version.
+To run this locally, clone the repository using SSH or HTTP from my GitHub. Once inside your preferred editor, run `npm install` to install the necessary dependencies. After completion, you can run the site from the terminal. Alternatively, you can visit the deployed version.
 
-Link to deployed: https://mikegoat1.github.io/FliccPicker/
+Link to deployed: [FliccPicker](https://mikegoat1.github.io/FliccPicker/)
 <image src="./assets/images/FLICCPICKER.png" >
 
 ## Usage
 
+1. Open the application.
+2. Select a genre from the dropdown menu.
+3. Click the "PICK MY FLICC" button.
+4. Browse through the curated list of movies or shows.
+5. Click on a movie or show to get more details and watch it.
 
+## Tools Used
+
+- **jQuery**: For DOM manipulation and AJAX requests.
+- **JavaScript**: For dynamic content generation and logic implementation.
+- **DOM Manipulation**: To dynamically update the content based on user interactions.
+- **Fetch Calls**: To retrieve data from external APIs.
 
 ## Credits
 
-
 Alyson, Randon, Austin, Michael
--Credit goes out to (shields.io). Support @ <https://opencollective.com/shields>.
-
+Credit goes out to [shields.io](https://opencollective.com/shields) for the badge.
 
 ## Features
 
+- Dynamic genre selection
+- Curated list of movies and shows
+- Easy navigation and user-friendly interface
+- Integration with external APIs for fetching movie data
 
+## License
 
-## Liscense
-
-This product is license with MIT
+This product is licensed under the MIT License.
 <https://choosealicense.com/licenses/mit/>
