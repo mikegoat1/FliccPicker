@@ -122,41 +122,6 @@ function printResults(resultObject) {
     resultContentEl.append(resultCard);
 };
 
-// function searchApi(genre) {
-
-//     var localQueryUrl = "https://unogsng.p.rapidapi.com/search?newdate=2002-06-01&orderby=rating&limit=100&subtitle=english&audio=english&offset=0";
-
-//     if (genre) {
-//         localQueryUrl = "https://unogsng.p.rapidapi.com/search?newdate=2002-06-01&" + genre + "orderby=rating&limit=100&subtitle=english&audio=english&offset=0";
-
-//         settings = {
-//             "async": true,
-//             "crossDomain": true,
-//             "url": localQueryUrl,
-//             "method": "GET",
-//             "headers": {
-//                 "x-rapidapi-key": "a905819813mshb487c4aa03c8e57p1f0687jsnfe693ad390a5",
-//                 "x-rapidapi-host": "unogsng.p.rapidapi.com"
-//             }
-//         };
-
-//         $.ajax(settings).done(function (response) {
-//             console.log(response);
-
-
-
-//             for (let i = 0; i < 9; i++) {
-//                 let randomValue = response.results[Math.floor(Math.random() * response.results.length)];
-//                 printResults(randomValue)
-
-//             }
-
-
-
-//         });
-
-//     }
-// };
 
 
 const settings = {
@@ -175,21 +140,20 @@ $.ajax(settings).done(function (response) {
     $(".jokes").text(response)
 });
 
-const settingsMovie = {
-	async: true,
-	crossDomain: true,
-	url: 'https://movies-api14.p.rapidapi.com/movies',
-	method: 'GET',
-	headers: {
-		'x-rapidapi-key': 'e63631f8d1msh168f938e27f4288p179d82jsn16e3f45361fa',
-		'x-rapidapi-host': 'movies-api14.p.rapidapi.com'
-	}
-};
+// const settingsMovie = {
+// 	async: true,
+// 	crossDomain: true,
+// 	url: 'https://movies-api14.p.rapidapi.com/movies',
+// 	method: 'GET',
+// 	headers: {
+// 		'x-rapidapi-key': 'e63631f8d1msh168f938e27f4288p179d82jsn16e3f45361fa',
+// 		'x-rapidapi-host': 'movies-api14.p.rapidapi.com'
+// 	}
+// };
 
-$.ajax(settingsMovie).done(function (response) {
-	console.log(response);
-});
+// $.ajax(settingsMovie).done(function (response) {
+// 	console.log(response);
+// });
 
-// searchApi(genre);
 
 printPlaylist();

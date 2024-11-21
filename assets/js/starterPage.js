@@ -1,17 +1,29 @@
-// Grabs Selected from Starter Page
-function sourceCheck() {
-    let genreInputVal = $("#genre-input").val();
-    let sourceInputVal = $("#source-input").val();
-    console.log(genreInputVal);
+$(document).ready(function() {
+    // Load genres from genres.json and populate the select element
+    $.getJSON('../../data/genres.json', function(data) {
+        let genreSelect = $('#genre-input');
+        $.each(data, function(index, genre) {
+            genreSelect.append($('<option>', {
+                value: genre.genre,
+                text: genre.genre
+            }));
+        });
+    });
 
-    let queryString = "http://localhost:5500/results_page.html?genrelist=" + genreInputVal;
+    // Grabs Selected from Starter Page
+    function sourceCheck() {
+        let genreInputVal = $("#genre-input").val();
+        console.log(genreInputVal);
 
-    document.location.replace(queryString);
+        let queryString = "http://localhost:5500/results_page.html?genrelist=" + genreInputVal;
 
-};
-// On click of submit button calls function sourceCheck
-$("button[value=button]").on("click", function (event) {
-    event.preventDefault();
-    sourceCheck();
+        document.location.replace(queryString);
+    }
+
+    // On click of submit button calls function sourceCheck
+    $("button[value=button]").on("click", function (event) {
+        event.preventDefault();
+        sourceCheck();
+    });
 });
 
