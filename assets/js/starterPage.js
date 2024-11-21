@@ -16,7 +16,7 @@ $(document).ready(function () {
         let genreInputVal = $("#genre-input").val();
         // console.log(genreInputVal);
 
-        let queryString = "http://localhost:5500/views/results_page.html?genrelist=" + encodeURIComponent(genreInputVal);
+        let queryString = window.location.origin + "/views/results_page.html?genrelist=" + encodeURIComponent(genreInputVal);
         document.location.replace(queryString);
     }
 
