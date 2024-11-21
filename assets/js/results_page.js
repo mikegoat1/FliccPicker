@@ -174,7 +174,7 @@ const settings = {
 
 $.ajax(settings).done(function (response) {
 	console.log(response);
-    $(".jokes").text(response.joke)
+    $(".jokes").text(response)
 });
 
 
