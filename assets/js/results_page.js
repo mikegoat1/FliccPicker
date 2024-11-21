@@ -43,7 +43,38 @@ resultContentEl.addEventListener("click", function (event) {
 
     }
 });
+$(document).ready(function() {
+    // Load genres from genres.json and populate the sidebar
+    $.getJSON('../data/genres.json', function(data) {
+        let genreList = $('#ul');
+        $.each(data, function(index, genre) {
+            let listItem = $('<li>', {
+                class: 'list-group-item',
+                text: genre.genre
+            });
+            genreList.append(listItem);
+        });
+    });
 
+    // Existing code...
+
+    // Grabs Selected from Starter Page
+    function sourceCheck() {
+        let genreInputVal = $("#genre-input").val();
+        let sourceInputVal = $("#source-input").val();
+        console.log(genreInputVal);
+
+        let queryString = "http://localhost:5500/results_page.html?genrelist=" + genreInputVal;
+
+        document.location.replace(queryString);
+    }
+
+    // On click of submit button calls function sourceCheck
+    $("button[value=button]").on("click", function (event) {
+        event.preventDefault();
+        sourceCheck();
+    });
+});
 function printPlaylist() {
 
     let stored = localStorage.getItem("movieTitle");
