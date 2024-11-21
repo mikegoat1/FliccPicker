@@ -13,7 +13,7 @@ console.log(genre)
 
 
 $(document).ready(function () {
-    $.getJSON('../data/genres.json', function (data) {
+    $.getJSON('/data/genres.json', function (data) {
         let genreList = $('#ul');
         $.each(data, function (index, genre) {
             let listItem = $('<li>', {
@@ -84,7 +84,7 @@ $(document).ready(function () {
         let genreInputVal = $("#genre-input").val();
         console.log(genreInputVal);
 
-        let queryString = "http://localhost:5500/views/results_page.html?genrelist=" + encodeURIComponent(genreInputVal);
+        let queryString = window.location.origin + "/views/results_page.html?genrelist=" + encodeURIComponent(genreInputVal);
 
         document.location.replace(queryString);
     }
