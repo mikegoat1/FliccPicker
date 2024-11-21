@@ -15,6 +15,7 @@ FliccPicker is an application designed to help you overcome the overwhelming num
   - [Credits](#credits)
   - [Features](#features)
   - [License](#license)
+  - [Fixes](#fixes)
 
 ## Installation
 
@@ -54,3 +55,11 @@ Credit goes out to [shields.io](https://opencollective.com/shields) for the badg
 
 This product is licensed under the MIT License.
 <https://choosealicense.com/licenses/mit/>
+
+## Fixes 
+- I need to fix select when logged into deployed.
+- Fix the first generating of cards when genre has spaces.
+- Add favorite page. 
+- Create a about me page. 
+- Add them to navbar. 
+- Adjust the cards and UI so that its more appealing. 
