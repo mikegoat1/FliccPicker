@@ -3,6 +3,7 @@ $(document).ready(function() {
     $.getJSON('../../data/genres.json', function(data) {
         let genreSelect = $('#genre-input');
         $.each(data, function(index, genre) {
+            console.log(genre);
             genreSelect.append($('<option>', {
                 value: genre.genre,
                 text: genre.genre
@@ -13,7 +14,7 @@ $(document).ready(function() {
     // Grabs Selected from Starter Page
     function sourceCheck() {
         let genreInputVal = $("#genre-input").val();
-        console.log(genreInputVal);
+        // console.log(genreInputVal);
 
         let queryString = "http://localhost:5500/views/results_page.html?genrelist=" + genreInputVal;
 

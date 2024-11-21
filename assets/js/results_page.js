@@ -1,70 +1,86 @@
-// Variables
-var storedMovieTitle;
-var getList = [];
+// const iables
+let storedMovieTitle;
+const getList = [];
 
 
-var resultContentEl = document.querySelector("#result-content");
-var playlistContentEl = document.querySelector("#playlist-content");
+const resultContentEl = document.querySelector("#result-content");
+const playlistContentEl = document.querySelector("#playlist-content");
 //search bar url
-var userParams = document.location.search;
+const userParams = document.location.search;
 console.log(userParams);
-var genre = userParams.split("?").pop();
+const genre = userParams.split("?").pop();
 console.log(genre)
-//
-resultContentEl.addEventListener("click", function (event) {
-    console.log(event.target.value);
-    event.stopPropagation();
-    storedMovieTitle = event.target.value;
 
-    // add to local storage
-    console.log("Here I am!")
-    if (event.target.matches("#playlist")) {
 
-        let stored = localStorage.getItem("movieTitle");
-        if (stored) {
-            let optimizedStored = JSON.parse(stored);
-            getList = optimizedStored;
-
-            getList.push(storedMovieTitle);
-            console.log(getList)
-            localStorage.setItem("movieTitle", JSON.stringify(getList));
-            var playlistTitles = document.createElement("li");
-            playlistTitles.innerHTML = storedMovieTitle;
-            $("#ul").append(playlistTitles);
-        } else {
-            getList.push(storedMovieTitle);
-            console.log(getList)
-            localStorage.setItem("movieTitle", JSON.stringify(getList));
-            var playlistTitles = document.createElement("li");
-            playlistTitles.innerHTML = storedMovieTitle;
-            $("#ul").append(playlistTitles);
-
-        }
-
-    }
-});
-$(document).ready(function() {
-    // Load genres from genres.json and populate the sidebar
-    $.getJSON('../data/genres.json', function(data) {
+$(document).ready(function () {
+    $.getJSON('../data/genres.json', function (data) {
         let genreList = $('#ul');
-        $.each(data, function(index, genre) {
+        $.each(data, function (index, genre) {
             let listItem = $('<li>', {
                 class: 'list-group-item',
-                text: genre.genre
+                text: genre.genre,
+                click: function () {
+                    generateMovieCards(genre.genre);
+                }
             });
             genreList.append(listItem);
         });
     });
 
-    // Existing code...
+    // Function to generate movie cards based on genre
+    function generateMovieCards(genre) {
+        $('#result-content').empty(); // Clear existing movie cards
+        $.getJSON('../data/movies.json', function (data) {
+            let filteredMovies = data.filter(movie => movie.genres.includes(genre));
+            filteredMovies.forEach(movie => {
+                createMovieCard(movie);
+            });
+        });
+    }
+    // Parse the genre parameter from the URL
+    const userParams = new URLSearchParams(decodeURIComponent(window.location.search));
+    console.log(userParams);
+    const genre = userParams.get('genrelist');
+    console.log(genre);
+
+    // Load movies from movies.json and filter based on the genre parameter
+    $.getJSON('../data/movies.json', function (data) {
+        let filteredMovies = data.filter(movie => movie.genres.includes(genre));
+        filteredMovies.forEach(movie => {
+            console.log(movie);
+            createMovieCard(movie);
+        });
+    });
+
+    // Function to create a movie card
+    function createMovieCard(movie) {
+        const resultCard = $('<div>', { class: 'card text-white mb-3 p-3', style: 'border-color: #185ADB; background-color: #FFC947;' });
+        const resultBody = $('<div>', { class: 'card-body', style: 'background-size: cover; background-image: url(' + movie.backdrop_path + ')' });
+        const movieTitle = $('<h3>').text(movie.title);
+        const bodyContentEl = $('<p>').html('<strong>Date:</strong> ' + movie.release_date + '<br/>' +
+            '<strong>Ratings:</strong> ' + (movie.imdbrating || 'No rating for this entry.') + '<br/>' +
+            '<strong>Description:</strong> ' + (movie.overview || 'No description for this entry.'));
+        const watchButtonEl = $('<a>', { class: 'btn btn-dark', href: 'https://www.netflix.com/title/' + movie._id, text: 'Watch Now' });
+        const favoriteButtonEl = $('<button>', { class: 'btn btn-dark m-2', text: 'Add to Favorites', value: movie.title, id: 'favorite' });
+
+        resultBody.append(movieTitle, bodyContentEl, watchButtonEl, favoriteButtonEl);
+        resultCard.append(resultBody);
+        $('#result-content').append(resultCard);
+    }
+
+    // Event listener for the favorite button
+    $('#result-content').on('click', '#favorite', function (event) {
+        const movieTitle = $(this).val();
+        console.log('Favorite:', movieTitle);
+        // Add to local storage or handle favorite logic here
+    });
 
     // Grabs Selected from Starter Page
     function sourceCheck() {
         let genreInputVal = $("#genre-input").val();
-        let sourceInputVal = $("#source-input").val();
         console.log(genreInputVal);
 
-        let queryString = "http://localhost:5500/results_page.html?genrelist=" + genreInputVal;
+        let queryString = "http://localhost:5500/results_page.html?genrelist=" + encodeURIComponent(genreInputVal);
 
         document.location.replace(queryString);
     }
@@ -75,99 +91,20 @@ $(document).ready(function() {
         sourceCheck();
     });
 });
-function printPlaylist() {
-
-    let stored = localStorage.getItem("movieTitle");
-    if (stored) {
-
-
-        let optimizedStored = JSON.parse(stored);
-        console.log(JSON.parse(stored))
-
-
-        for (i = 0; i < optimizedStored.length; i++) {
-            var playlistTitles = document.createElement("li");
-            console.log(optimizedStored[i])
-            playlistTitles.innerHTML = optimizedStored[i];
-            $("#ul").append(playlistTitles);
-
-        }
-    }
-};
-
-function printResults(resultObject) {
-    // console.log(resultObject);
-
-    //Create div for result cards
-    var resultCard = document.createElement('div');
-    resultCard.classList.add('card', 'text-white', 'mb-3', 'p-3');
-    resultCard.setAttribute("style", "border-color: #185ADB; background-color: #FFC947;")
-
-    // Create div for body content on result cards
-    var resultBody = document.createElement('div');
-    resultBody.classList.add('card-body');
-    resultBody.setAttribute("style", "background-size: cover; background-image: url(" + resultObject.img + ")")
-    resultCard.append(resultBody);
-
-    // Create h3 element for result title
-    var movieTitle = document.createElement('h3');
-
-    movieTitle.textContent = resultObject.title;
-
-    storedMovieTitle = resultObject.title;
-
-    var bodyContentEl = document.createElement('p');
-    bodyContentEl.innerHTML =
-        '<strong>Date:</strong> ' + resultObject.year + '<br/>';
-
-    if (resultObject.imdbrating) {
-        bodyContentEl.innerHTML +=
-            '<strong>Ratings:</strong> ' + resultObject.imdbrating + '<br/>';
-    } else {
-        bodyContentEl.innerHTML +=
-            '<strong>Ratings:</strong> No subject for this entry.';
-    }
-    if (resultObject.synopsis) {
-        bodyContentEl.innerHTML +=
-            '<strong>Description:</strong> ' + resultObject.synopsis;
-    } else {
-        bodyContentEl.innerHTML +=
-            '<strong>Description:</strong>  No description for this entry.';
-    };
-
-    var watchButtonEl = document.createElement('a');
-    watchButtonEl.textContent = 'Watch Now';
-    watchButtonEl.setAttribute('href', "https://www.netflix.com/title/" + resultObject.nfid);
-    watchButtonEl.setAttribute("id", "watch");
-    watchButtonEl.classList.add('btn', 'btn-dark');
-
-    var playlistButtonEl = document.createElement('button');
-    playlistButtonEl.textContent = 'Add to Playlist';
-    playlistButtonEl.setAttribute("id", "playlist");
-    playlistButtonEl.setAttribute("value", resultObject.title)
-    playlistButtonEl.classList.add('btn', 'btn-dark', 'm-2');
-
-    resultBody.append(movieTitle, bodyContentEl, watchButtonEl, playlistButtonEl);
-
-
-    resultContentEl.append(resultCard);
-};
-
-
 
 const settings = {
-	async: true,
-	crossDomain: true,
-	url: 'https://geek-jokes1.p.rapidapi.com/',
-	method: 'GET',
-	headers: {
-		'x-rapidapi-key': 'e63631f8d1msh168f938e27f4288p179d82jsn16e3f45361fa',
-		'x-rapidapi-host': 'geek-jokes1.p.rapidapi.com'
-	}
+    async: true,
+    crossDomain: true,
+    url: 'https://geek-jokes1.p.rapidapi.com/',
+    method: 'GET',
+    headers: {
+        'x-rapidapi-key': 'e63631f8d1msh168f938e27f4288p179d82jsn16e3f45361fa',
+        'x-rapidapi-host': 'geek-jokes1.p.rapidapi.com'
+    }
 };
 
 $.ajax(settings).done(function (response) {
-	console.log(response);
+    console.log(response);
     $(".jokes").text(response)
 });
 
@@ -187,4 +124,3 @@ $.ajax(settings).done(function (response) {
 // });
 
 
-printPlaylist();
