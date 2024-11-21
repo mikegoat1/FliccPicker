@@ -1,0 +1,78 @@
+[
+    {
+        "_id": 868759,
+        "backdrop_path": "https://image.tmdb.org/t/p/original/b9UCfDzwiWw7mIFsIQR9ZJUeh7q.jpg",
+        "contentType": "movie",
+        "genres": [
+            "Action & Adventure",
+            "Comedy",
+            "Romance"
+        ],
+        "original_title": "Ghosted",
+        "overview": "Salt-of-the-earth Cole falls head over heels for enigmatic Sadie \u2014 but then makes the shocking discovery that she\u2019s a secret agent. Befor\u2026",
+        "poster_path": "https://image.tmdb.org/t/p/original/liLN69YgoovHVgmlHJ876PKi5Yi.jpg",
+        "release_date": "2023-04-18",
+        "title": "Ghosted"
+    },
+    {
+        "_id": 1102776,
+        "backdrop_path": "https://image.tmdb.org/t/p/original/zh614Bixv2ePaHK8gzcUpUmcvYv.jpg",
+        "contentType": "movie",
+        "genres": [
+            "Thriller",
+            "Action & Adventure",
+            "Crime"
+        ],
+        "original_title": "AKA",
+        "overview": "A steely special ops agent finds his morality put to the test when he infiltrates a crime syndicate and unexpectedly bonds with the boss\u2026",
+        "poster_path": "https://image.tmdb.org/t/p/original/3BSxAjiporlwQTWzaHZ9Yrl5C9D.jpg",
+        "release_date": "2023-04-28",
+        "title": "AKA"
+    },
+    {
+        "_id": 934433,
+        "backdrop_path": "https://image.tmdb.org/t/p/original/44immBwzhDVyjn87b3x3l9mlhAD.jpg",
+        "contentType": "movie",
+        "genres": [
+            "Horror",
+            "Mystery",
+            "Thriller"
+        ],
+        "original_title": "Scream VI",
+        "overview": "Following the latest Ghostface killings, the four survivors leave Woodsboro behind and start a fresh chapter.",
+        "poster_path": "https://image.tmdb.org/t/p/original/wDWwtvkRRlgTiUr6TyLSMX8FCuZ.jpg",
+        "release_date": "2023-03-08",
+        "title": "Scream VI"
+    },
+    {
+        "_id": 948713,
+        "backdrop_path": "https://image.tmdb.org/t/p/original/xwA90BwZXTh8ke3CVsQlj8EOkFr.jpg",
+        "contentType": "movie",
+        "genres": [
+            "Action & Adventure",
+            "History",
+            "Drama",
+            "War"
+        ],
+        "original_title": "The Last Kingdom: Seven Kings Must Die",
+        "overview": "In the wake of King Edward's death, Uhtred of Bebbanburg and his comrades adventure across a fractured kingdom in the hopes of unitin\u2026",
+        "poster_path": "https://image.tmdb.org/t/p/original/7yyFEsuaLGTPul5UkHc5BhXnQ0k.jpg",
+        "release_date": "2023-04-14",
+        "title": "The Last Kingdom: Seven Kings Must Die"
+    },
+    {
+        "_id": 420808,
+        "backdrop_path": "https://image.tmdb.org/t/p/original/8HfjrSxfTVKmjNh8cJjbu5eXzcX.jpg",
+        "contentType": "movie",
+        "genres": [
+            "Family",
+            "Sci-Fi & Fantasy",
+            "Action & Adventure"
+        ],
+        "original_title": "Peter Pan & Wendy",
+        "overview": "Wendy Darling, a young girl afraid to leave her childhood home behind, meets Peter Pan, a boy who refuses to grow up. Alongside he\u2026",
+        "poster_path": "https://image.tmdb.org/t/p/original/9NXAlFEE7WDssbXSMgdacsUD58Y.jpg",
+        "release_date": "2023-04-20",
+        "title": "Peter Pan & Wendy"
+    }
+]
