@@ -8,7 +8,7 @@ const genre = userParams.split("?").pop();
 
 
 $(document).ready(function () {
-    $.getJSON(`${baseURL}/data/genres.json`, function (data) {
+    $.getJSON(`/data/genres.json`, function (data) {
         let genreList = $('#ul');
         $.each(data, function (index, genre) {
             let listItem = $('<li>', {

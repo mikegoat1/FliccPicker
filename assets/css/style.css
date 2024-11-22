@@ -27,7 +27,7 @@ body {
     background: linear-gradient(90deg, rgb(30, 30, 30), rgb(70, 80, 190));
     color: rgb(245, 245, 245);
     padding: 20px;
-    box-snadow: 2px 0px 8px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.5);
     /* Depth effect */
     transition: transform 0.3s ease-in-out;
 }
