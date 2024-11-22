@@ -54,15 +54,62 @@ $(document).ready(function () {
 
     // Function to create a movie card
     function createMovieCard(movie) {
-        const resultCard = $('<div>', { class: 'card text-white mb-3 p-3', style: 'border-color: #185ADB; background-color: #FFC947;' });
-        const resultBody = $('<div>', { class: 'card-body', style: 'background-size: contain; background-image: url(' + movie.backdrop_path + ')' });
-        const movieTitle = $('<h3>').text(movie.title);
-        const bodyContentEl = $('<p>').html('<strong>Date:</strong> ' + movie.release_date + '<br/>' +
-            '<strong>Ratings:</strong> ' + (movie.imdbrating || 'No rating for this entry.') + '<br/>' +
+        const resultCard = $('<div>', {
+            class: 'card text-white mb-3 p-3',
+            style: 'border: 1px solid rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom, rgb(70, 80, 190), rgb(30, 30, 30)); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); width: 20rem;'
+        });
+        const resultImageTop = $('<img>', { class: 'card-img-top', src: movie.poster_path, alt: movie.title });
+        const resultBody = $('<div>', { class: 'card-body', style: 'background-color: rgb(30, 30, 30);' });
+        const movieTitle = $('<h5>', { style: 'color: rgb(255, 191, 3);' }).text(movie.title);
+        const bodyContentEl = $('<p>', { style: 'color: rgb(245, 245, 245);' }).html('<strong>Date:</strong> ' + movie.release_date + '<br/>' +
             '<strong>Description:</strong> ' + (movie.overview || 'No description for this entry.'));
-        const watchButtonEl = $('<a>', { class: 'btn btn-dark', href: 'https://www.netflix.com/title/' + movie._id, text: 'Watch Now' });
-        const favoriteButtonEl = $('<button>', { class: 'btn btn-dark m-2', text: 'Add to Favorites', value: movie.title, id: 'favorite' });
-        resultBody.append(movieTitle, bodyContentEl, watchButtonEl, favoriteButtonEl);
+        const buttonContainer = $('<div>', { class: 'd-flex justify-content-between' });
+        const watchButtonEl = $('<button>', {
+            class: 'btn btn-dark btn-sm m-1',
+            style: 'background-color: rgb(70, 80, 190); color: white; text-decoration: none; font-size: 0.8rem; transition: background-color 0.3s, box-shadow 0.3s;'
+        }).append(
+            $('<a>', {
+                href: 'https://www.netflix.com/title/' + movie._id,
+                text: 'Watch Now',
+                target: '_blank',
+                style: 'color: white; text-decoration: none; font-size: 0.8rem;'
+            })
+        );
+
+        watchButtonEl.hover(
+            function () {
+                $(this).css({
+                    'background-color': 'rgb(220, 20, 60)',
+                    'box-shadow': '0 0 10px rgb(255, 191, 3)'
+                });
+            },
+            function () {
+                $(this).css({
+                    'background-color': 'rgb(70, 80, 190)',
+                    'box-shadow': 'none'
+                });
+            }
+        );
+        const favoriteButtonEl = $('<button>', {
+            class: 'btn btn-dark btn-sm m-1',
+            text: 'Add to Favorites',
+            value: movie.title,
+            id: 'favorite',
+            style: 'background-color: rgb(70, 80, 190); color: white; font-size: 0.8rem; transition: background-color 0.3s;'
+        });
+
+        watchButtonEl.hover(
+            function () { $(this).css('background-color', 'rgb(220, 20, 60)'); },
+            function () { $(this).css('background-color', 'rgb(70, 80, 190)'); }
+        );
+
+        favoriteButtonEl.hover(
+            function () { $(this).css('background-color', 'rgb(220, 20, 60)'); },
+            function () { $(this).css('background-color', 'rgb(70, 80, 190)'); }
+        );
+
+        buttonContainer.append(watchButtonEl, favoriteButtonEl);
+        resultBody.append(resultImageTop, movieTitle, bodyContentEl, buttonContainer);
         resultCard.append(resultBody);
         $('#result-content').append(resultCard);
     }
