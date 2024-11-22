@@ -2,7 +2,7 @@ const startBaseURL = window.location.origin + window.location.pathname.substring
 
 $(document).ready(function () {
     // Load genres from genres.json and populate the select element
-    $.getJSON(`./data/genres.json`, function (data) {
+    $.getJSON(`../data/genres.json`, function (data) {
         let genreSelect = $('#genre-input');
         $.each(data, function (index, genre) {
             console.log(genre);
