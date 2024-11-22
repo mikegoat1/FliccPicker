@@ -76,3 +76,6 @@ footer {
   padding: 10px 0;
   width: 100%;
 }
+.nav-link:hover {
+  color: rgb(255, 191, 3) !important;
+}

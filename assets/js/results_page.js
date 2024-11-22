@@ -58,7 +58,7 @@ $(document).ready(function () {
             class: 'card text-white mb-3 p-3',
             style: 'border: 1px solid rgba(0, 0, 0, 0.5); background: linear-gradient(to bottom, rgb(70, 80, 190), rgb(30, 30, 30)); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); width: 20rem;'
         });
-        const resultImageTop = $('<img>', { class: 'card-img-top', src: movie.poster_path, alt: movie.title });
+        const resultImageTop = $('<img>', { class: 'card-img-top h-auto', src: movie.poster_path, alt: movie.title });
         const resultBody = $('<div>', { class: 'card-body', style: 'background-color: rgb(30, 30, 30);' });
         const movieTitle = $('<h5>', { style: 'color: rgb(255, 191, 3);' }).text(movie.title);
         const bodyContentEl = $('<p>', { style: 'color: rgb(245, 245, 245);' }).html('<strong>Date:</strong> ' + movie.release_date + '<br/>' +
