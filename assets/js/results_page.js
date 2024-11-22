@@ -3,9 +3,6 @@ let storedMovieTitle;
 const getList = [];
 
 
-const resultContentEl = document.querySelector("#result-content");
-const playlistContentEl = document.querySelector("#playlist-content");
-//search bar url
 const userParams = document.location.search;
 console.log(userParams);
 const genre = userParams.split("?").pop();
@@ -158,6 +155,11 @@ $.ajax(settings).done(function (response) {
     console.log(response);
     $(".jokes").text(response)
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const homeLink = document.getElementById('home-link');
+    homeLink.href = window.location.pathname;
+  });
 
 // const settingsMovie = {
 // 	async: true,

@@ -22,20 +22,38 @@ body {
 
 .sidenav {
   flex: 0 0 200px;
-  background-color: #0A1931;
-  padding-top: 20px;
+  background: linear-gradient(to bottom, rgb(30, 30, 30), rgb(70, 80, 190));
+  /* Gradient from dark neutral to royal blue */
+  color: rgb(245, 245, 245);
+  /* Light Gray for Text */
+  padding: 20px;
+  box-shadow: 2px 0px 8px rgba(0, 0, 0, 0.5);
+  /* Shadow for visual depth */
   overflow-y: auto;
 }
 
+.sidenav h2 {
+  font-weight: bold;
+  color: rgb(245, 245, 245);
+  /* Light Gray for Text */
+  margin-bottom: 10px;
+}
+.sidenav .list-group {
+  padding-top: 40px;
+}
 .sidenav .list-group-item {
-  color: white;
-  background-color: #0A1931;
+  color: rgb(245, 245, 245);
+  /* Light Gray for Text */
+  background-color: transparent;
+  /* Make background transparent to show gradient */
   border: none;
   text-align: center;
 }
 
 .sidenav .list-group-item:hover {
-  background-color: #575757;
+  /* background-color: #575757; */
+  color: rgb(255, 191, 3);
+  /* Golden yellow for hover state */
 }
 
 .main-content {
@@ -76,6 +94,7 @@ footer {
   padding: 10px 0;
   width: 100%;
 }
+
 .nav-link:hover {
   color: rgb(255, 191, 3) !important;
 }
