@@ -23,7 +23,37 @@ body {
     background-color: #2e2e2e;
 }
 
+.offcanvas {
+    background: linear-gradient(90deg, rgb(30, 30, 30), rgb(70, 80, 190));
+    color: rgb(245, 245, 245);
+    padding: 20px;
+    box-snadow: 2px 0px 8px rgba(0, 0, 0, 0.5);
+    /* Depth effect */
+    transition: transform 0.3s ease-in-out;
+}
 
+.offcanvas-header {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(255, 191, 3);
+    /* Golden yellow for branding emphasis */
+    border-bottom: 1px solid rgba(245. 245. 245. 0.2);
+    /* Subtle divider */
+    padding-bottom: 10px;
+}
 
-/* suggested background color. Makes the buttons and icon pop. maybe add
-  a shadow to the image with white as the shadow. or a glow effect (#2e2e2e) */
+.offcanvas-body {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: auto;
+}
+.offcanvas-close {
+    color: rgb(245, 245, 245);
+    font-size: 24px;
+    transition: color 0.3s ease-in-out;
+}
+
+.offcanvas-close:hover {
+    color: rgb(255, 191, 3);
+    cursor: pointer;
+}
