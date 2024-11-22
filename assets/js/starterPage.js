@@ -1,6 +1,8 @@
+const baseURL = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
+
 $(document).ready(function () {
     // Load genres from genres.json and populate the select element
-    $.getJSON('../../data/genres.json', function (data) {
+    $.getJSON(`${baseURL}/data/genres.json`, function (data) {
         let genreSelect = $('#genre-input');
         $.each(data, function (index, genre) {
             console.log(genre);

@@ -1,15 +1,14 @@
 let storedMovieTitle;
 const getList = [];
 
-
+const baseURL = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
 const userParams = document.location.search;
-console.log(userParams);
 const genre = userParams.split("?").pop();
-console.log(genre)
+
 
 
 $(document).ready(function () {
-    $.getJSON('/data/genres.json', function (data) {
+    $.getJSON(`${baseURL}/data/genres.json`, function (data) {
         let genreList = $('#ul');
         $.each(data, function (index, genre) {
             let listItem = $('<li>', {
