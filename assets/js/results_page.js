@@ -1,4 +1,3 @@
-// const iables
 let storedMovieTitle;
 const getList = [];
 
@@ -14,9 +13,11 @@ $(document).ready(function () {
         let genreList = $('#ul');
         $.each(data, function (index, genre) {
             let listItem = $('<li>', {
-                class: 'list-group-item',
+                class: 'list-group-item sidebar-link',
                 text: genre.genre,
                 click: function () {
+                    $('.sidebar-link').removeClass('active');
+                    $(this).addClass('active');
                     generateMovieCards(genre.genre);
                 }
             });

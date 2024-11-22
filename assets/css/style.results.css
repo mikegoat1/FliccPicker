@@ -51,9 +51,14 @@ body {
 }
 
 .sidenav .list-group-item:hover {
-  /* background-color: #575757; */
   color: rgb(255, 191, 3);
   /* Golden yellow for hover state */
+}
+.sidebar-link.active {
+  background: rgb(30, 30, 30); /* Near Black */
+  color: rgb(255, 191, 3); /* Golden Yellow */
+  border-left: 4px solid rgb(255, 191, 3); /* Adds emphasis */
+  padding-left: 15px; /* Aligns text after border */
 }
 
 .main-content {
@@ -88,11 +93,20 @@ body {
 }
 
 footer {
-  background-color: #343a40;
-  color: white;
+  background: rgb(30, 30, 30);
+  color: rgb(245, 245, 245); /* Light gray for text */
+  padding: 20px;
   text-align: center;
-  padding: 10px 0;
-  width: 100%;
+}
+
+footer a {
+  color: rgb(245, 245, 245); /* Light gray for text */
+  text-decoration: none;
+  font-size: large;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-link:hover {
