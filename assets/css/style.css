@@ -37,7 +37,7 @@ body {
     font-weight: bold;
     color: rgb(255, 191, 3);
     /* Golden yellow for branding emphasis */
-    border-bottom: 1px solid rgba(245. 245. 245. 0.2);
+    border-bottom: 1px solid rgba(245, 245, 245, 0.2);
     /* Subtle divider */
     padding-bottom: 10px;
 }
