@@ -72,6 +72,17 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
+.env.local
+.env.*.local
+
+# Secrets / API keys — never commit these.
+# NOTE: FliccPicker is a static site with no build step, so any key referenced by
+# client-side JS is still public once shipped to the browser. Use a backend or
+# serverless proxy for real secrets. These patterns guard any local key files.
+secrets.js
+config.secret.js
+*.secret.js
+apikeys.json
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache

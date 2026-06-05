@@ -2,10 +2,6 @@ let storedMovieTitle;
 const getList = [];
 
 const baseURL = window.location.origin + window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
-const userParams = document.location.search;
-const genre = userParams.split("?").pop();
-
-
 
 $(document).ready(function () {
     $.getJSON(`../data/genres.json`, function (data) {
@@ -95,11 +91,6 @@ $(document).ready(function () {
             style: 'background-color: rgb(70, 80, 190); color: white; font-size: 0.8rem; transition: background-color 0.3s;'
         });
 
-        watchButtonEl.hover(
-            function () { $(this).css('background-color', 'rgb(220, 20, 60)'); },
-            function () { $(this).css('background-color', 'rgb(70, 80, 190)'); }
-        );
-
         favoriteButtonEl.hover(
             function () { $(this).css('background-color', 'rgb(220, 20, 60)'); },
             function () { $(this).css('background-color', 'rgb(70, 80, 190)'); }
@@ -123,22 +114,16 @@ $(document).ready(function () {
             localStorage.setItem('favorites', JSON.stringify(favorites));
         }
     }
-    // Grabs Selected from Starter Page
-    function sourceCheck() {
-        let genreInputVal = $("#genre-input").val();
-        console.log(genreInputVal);
-
-        let queryString = window.location.origin + "/views/results_page.html?genrelist=" + encodeURIComponent(genreInputVal);
-
-        document.location.replace(queryString);
-    }
-
-    // On click of submit button calls function sourceCheck
-    $("button[value=button]").on("click", function (event) {
-        event.preventDefault();
-        sourceCheck();
-    });
 });
+
+// SECURITY WARNING: This RapidAPI key is exposed in client-side code.
+// Because FliccPicker is a static site (no build step / no server), there is no
+// secure way to hide a secret here — anything shipped to the browser is public.
+// This key is ALREADY compromised (committed to a public GitHub repo) and should
+// be rotated/revoked. In a real app, proxy this request through a backend or
+// serverless function that injects the key from an environment variable.
+// TODO: move to an env var / server-side proxy and revoke the key below.
+const RAPIDAPI_KEY = 'e63631f8d1msh168f938e27f4288p179d82jsn16e3f45361fa';
 
 const settings = {
     async: true,
@@ -146,7 +131,7 @@ const settings = {
     url: 'https://geek-jokes1.p.rapidapi.com/',
     method: 'GET',
     headers: {
-        'x-rapidapi-key': 'e63631f8d1msh168f938e27f4288p179d82jsn16e3f45361fa',
+        'x-rapidapi-key': RAPIDAPI_KEY,
         'x-rapidapi-host': 'geek-jokes1.p.rapidapi.com'
     }
 };
@@ -156,18 +141,13 @@ $.ajax(settings).done(function (response) {
     $(".jokes").text(response)
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const homeLink = document.getElementById('home-link');
-    homeLink.href = window.location.pathname;
-  });
-
 // const settingsMovie = {
 // 	async: true,
 // 	crossDomain: true,
 // 	url: 'https://movies-api14.p.rapidapi.com/movies',
 // 	method: 'GET',
 // 	headers: {
-// 		'x-rapidapi-key': 'e63631f8d1msh168f938e27f4288p179d82jsn16e3f45361fa',
+// 		'x-rapidapi-key': RAPIDAPI_KEY,
 // 		'x-rapidapi-host': 'movies-api14.p.rapidapi.com'
 // 	}
 // };
